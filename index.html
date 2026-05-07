@@ -18,7 +18,7 @@
         .font-title { font-family: 'Cinzel', serif; }
         .font-cursive { font-family: 'Great Vibes', cursive; }
         
-        /* --- SOBRE --- */
+        /* --- SOBRE (NO TOCAR) --- */
         #envelope-wrapper { perspective: 1000px; position: relative; z-index: 60; }
         #envelope {
             width: 300px; height: 200px; background: white; position: relative;
@@ -32,10 +32,19 @@
         }
         .open #flap { transform: rotateX(180deg); }
 
-        /* --- MARIPOSAS --- */
-        .butterfly {
-            position: absolute; pointer-events: none; z-index: 100;
-            width: 30px; height: 30px; opacity: 0;
+        /* --- ANIMACIÓN MARIPOSAS CUERPO --- */
+        .butterfly-body {
+            position: absolute; pointer-events: none; z-index: 5;
+            width: 25px; height: 25px; opacity: 0.5;
+            animation: moveAround 15s linear infinite;
+        }
+
+        @keyframes moveAround {
+            0% { transform: translate(0, 0) rotate(0deg); }
+            25% { transform: translate(100px, -50px) rotate(15deg); }
+            50% { transform: translate(50px, -150px) rotate(-10deg); }
+            75% { transform: translate(-100px, -50px) rotate(10deg); }
+            100% { transform: translate(0, 0) rotate(0deg); }
         }
 
         /* --- TRANSICIÓN --- */
@@ -62,8 +71,19 @@
     </div>
 
     <!-- CONTENIDO PRINCIPAL -->
-    <main id="main-content" class="hidden">
+    <main id="main-content" class="hidden relative">
         
+        <!-- MARIPOSAS DECORATIVAS DEL CUERPO (Fijas y animadas) -->
+        <div class="butterfly-body text-blue-200" style="top: 10%; left: 5%; animation-duration: 20s;">
+            <svg viewBox="0 0 100 100"><path fill="currentColor" d="M50 45c-5-10-25-15-30-5 0 5 5 15 15 15-10 0-15 10-15 15s10 10 20 0c5-5 10-15 10-25zM50 45c5-10 25-15 30-5 0 5-5 15-15 15 10 0 15 10 15 15s-10 10-20 0c-5-5-10-15-10-25z"/></svg>
+        </div>
+        <div class="butterfly-body text-blue-300" style="top: 40%; right: 10%; animation-duration: 25s; animation-delay: 2s;">
+            <svg viewBox="0 0 100 100"><path fill="currentColor" d="M50 45c-5-10-25-15-30-5 0 5 5 15 15 15-10 0-15 10-15 15s10 10 20 0c5-5 10-15 10-25zM50 45c5-10 25-15 30-5 0 5-5 15-15 15 10 0 15 10 15 15s-10 10-20 0c-5-5-10-15-10-25z"/></svg>
+        </div>
+        <div class="butterfly-body text-blue-200" style="top: 75%; left: 15%; animation-duration: 18s; animation-delay: 5s;">
+            <svg viewBox="0 0 100 100"><path fill="currentColor" d="M50 45c-5-10-25-15-30-5 0 5 5 15 15 15-10 0-15 10-15 15s10 10 20 0c5-5 10-15 10-25zM50 45c5-10 25-15 30-5 0 5-5 15-15 15 10 0 15 10 15 15s-10 10-20 0c-5-5-10-15-10-25z"/></svg>
+        </div>
+
         <!-- HERO -->
         <section class="relative h-screen w-full flex items-end justify-center pb-20">
             <img src="assets/hero.jpg" alt="Michelle" class="absolute inset-0 w-full h-full object-cover">
@@ -85,19 +105,18 @@
         </section>
 
         <!-- FECHA -->
-        <section class="py-20 text-center">
+        <section class="py-20 text-center relative">
             <h2 class="font-title text-4xl text-blue-900">24 de Octubre</h2>
             <div class="w-12 h-px bg-blue-300 mx-auto my-6"></div>
             <p class="tracking-[0.4em] text-blue-400 uppercase text-xs">Dos mil veintiséis</p>
         </section>
 
         <!-- UBICACIÓN -->
-        <section class="py-20 px-6 text-center bg-white">
+        <section class="py-20 px-6 text-center bg-white relative">
             <h2 class="font-title text-3xl text-blue-900 mb-2">Recepción</h2>
             <p class="text-blue-500 italic mb-10">Salón por confirmar - Ciudad de México</p>
             
             <div class="max-w-4xl mx-auto h-72 bg-blue-50 rounded-3xl overflow-hidden shadow-inner border border-blue-100 mb-10 flex items-center justify-center">
-                <!-- Mapa Interactivo -->
                 <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d120416.63462963172!2d-99.23933934789505!3d19.414930147717462!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x85ce0026db097507%3A0x54061076265ee841!2sCiudad%20de%20M%C3%A9xico%2C%20CDMX!5e0!3m2!1ses-419!2smx!4v1680000000000!5m2!1ses-419!2smx" width="100%" height="100%" style="border:0; opacity: 0.6;" allowfullscreen="" loading="lazy"></iframe>
             </div>
 
@@ -147,9 +166,12 @@
         </section>
 
         <!-- MURO -->
-        <section class="py-24 px-6 text-center bg-white">
+        <section class="py-24 px-6 text-center bg-white relative">
+            <div class="butterfly-body text-blue-100" style="bottom: 10%; right: 5%; animation-duration: 22s;">
+                <svg viewBox="0 0 100 100"><path fill="currentColor" d="M50 45c-5-10-25-15-30-5 0 5 5 15 15 15-10 0-15 10-15 15s10 10 20 0c5-5 10-15 10-25zM50 45c5-10 25-15 30-5 0 5-5 15-15 15 10 0 15 10 15 15s-10 10-20 0c-5-5-10-15-10-25z"/></svg>
+            </div>
             <h2 class="font-title text-2xl text-blue-900 mb-10">Muro de Deseos</h2>
-            <div class="max-w-2xl mx-auto space-y-6">
+            <div class="max-w-2xl mx-auto space-y-6 relative z-10">
                 <textarea placeholder="Deja tu mensaje aquí..." class="w-full h-40 p-8 rounded-3xl bg-blue-50/50 border border-blue-100 outline-none focus:border-blue-300 transition italic text-gray-600 resize-none"></textarea>
                 <button class="px-12 py-3 border-2 border-blue-200 text-blue-400 rounded-full font-bold text-[10px] tracking-widest hover:bg-blue-400 hover:text-white transition">PUBLICAR</button>
             </div>
@@ -163,7 +185,6 @@
 
     <!-- MOTOR DE ANIMACIÓN -->
     <script>
-        // Forma de la mariposa real
         const bflySVG = `
             <svg viewBox="0 0 100 100">
                 <path fill="#90CDF4" d="M50 45c-5-10-25-15-30-5 0 5 5 15 15 15-10 0-15 10-15 15s10 10 20 0c5-5 10-15 10-25zM50 45c5-10 25-15 30-5 0 5-5 15-15 15 10 0 15 10 15 15s-10 10-20 0c-5-5-10-15-10-25z"/>
@@ -177,20 +198,15 @@
             const main = document.getElementById('main-content');
             const btn = document.getElementById('btn-abrir');
 
-            // 1. Abrir flap
             wrapper.classList.add('open');
             btn.style.display = 'none';
 
-            // 2. Lanzar Mariposas
             for (let i = 0; i < 15; i++) {
                 crearMariposa();
             }
 
-            // 3. Transición Garantizada
             setTimeout(() => {
                 overlay.style.opacity = '0';
-                
-                // Quitamos el hidden y forzamos el opacity 1
                 main.classList.remove('hidden');
                 
                 setTimeout(() => {
@@ -203,14 +219,16 @@
 
         function crearMariposa() {
             const b = document.createElement('div');
-            b.className = 'butterfly';
+            b.style.position = 'fixed';
+            b.style.zIndex = '101';
+            b.style.width = '30px';
+            b.style.height = '30px';
             b.innerHTML = bflySVG;
             document.body.appendChild(b);
 
             const startX = window.innerWidth / 2;
             const startY = window.innerHeight / 2;
             
-            // Valores de vuelo aleatorios
             const destX = (Math.random() - 0.5) * window.innerWidth * 1.5;
             const destY = -(Math.random() * window.innerHeight + 200);
             const rot = (Math.random() - 0.5) * 360;
@@ -228,7 +246,6 @@
                 fill: 'forwards'
             });
 
-            // Limpieza
             setTimeout(() => b.remove(), 3000);
         }
     </script>
