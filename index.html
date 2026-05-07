@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mis XV Años - Michelle | Invytia Premium</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/framer-motion@10.16.4/dist/framer-motion.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Montserrat:wght@200;400;600&family=Great+Vibes&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --azul-claro: #EBF4FF;
+            --azul-medio: #BEE3F8;
+            --azul-premium: #90CDF4;
+            --dorado-soft: #D4AF37; /* Toque mínimo para elegancia */
+        }
+        body { font-family: 'Montserrat', sans-serif; background-color: var(--azul-claro); color: #2D3748; overflow-x: hidden; }
+        .font-title { font-family: 'Cinzel', serif; }
+        .font-cursive { font-family: 'Great Vibes', cursive; }
+        
+        /* Animación del Sobre */
+        #envelope-wrapper {
+            perspective: 1000px;
+            transition: all 1s ease-in-out;
+        }
+        .butterfly {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            pointer-events: none;
+            z-index: 50;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- SECCIÓN 1: EL SOBRE (OPENING) -->
+    <div id="opening-overlay" class="fixed inset-0 z-[100] bg-[#D1E9F6] flex items-center justify-center overflow-hidden">
+        <div id="envelope-container" class="relative w-80 h-60 bg-white rounded-b-lg shadow-2xl flex flex-col items-center justify-center p-6 border-t-4 border-blue-200">
+            <div class="absolute -top-10 left-0 right-0 h-20 bg-white clip-path-triangle shadow-sm"></div>
+            <h2 class="font-title text-xl text-blue-400 text-center">Mis XV Años<br><span class="text-2xl">Michelle</span></h2>
+            <button onclick="openInvitation()" class="mt-8 px-6 py-2 bg-blue-100 border border-blue-300 rounded-full text-blue-500 hover:bg-blue-200 transition duration-300 uppercase tracking-widest text-xs">Abrir Invitación</button>
+        </div>
+    </div>
+
+    <!-- CONTENIDO PRINCIPAL (Oculto al inicio) -->
+    <main id="main-content" class="opacity-0">
+        
+        <!-- HERO SECTION -->
+        <section class="relative h-screen w-full overflow-hidden">
+            <img src="assets/hero.jpg" alt="Michelle" class="w-full h-full object-cover">
+            <div class="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-[#EBF4FF]"></div>
+            <div class="absolute bottom-10 left-0 right-0 text-center">
+                <h1 class="font-title text-4xl md:text-6xl text-blue-800 tracking-widest">Michelle</h1>
+                <p class="font-cursive text-3xl text-blue-500 mt-2">Mis XV Años</p>
+            </div>
+        </section>
+
+        <!-- PADRES -->
+        <section class="py-20 px-6 text-center bg-white">
+            <div class="max-w-2xl mx-auto border-y border-blue-100 py-10">
+                <p class="uppercase tracking-[0.2em] text-xs text-gray-400 mb-6">Con la bendición de mis padres</p>
+                <h3 class="font-title text-xl text-blue-900 mb-2">Mariana Rodríguez</h3>
+                <h3 class="font-title text-xl text-blue-900">& Ricardo Pérez</h3>
+            </div>
+        </section>
+
+        <!-- CUENTA REGRESIVA & FECHA -->
+        <section class="py-16 bg-[#F0F7FF] text-center">
+            <h2 class="font-title text-2xl mb-4">24 de Octubre</h2>
+            <div class="flex justify-center gap-4 text-blue-800 font-light">
+                <div class="bg-white p-4 rounded-lg shadow-sm w-20"> <span class="block text-2xl font-bold">24</span> OCT </div>
+                <div class="bg-white p-4 rounded-lg shadow-sm w-20"> <span class="block text-2xl font-bold">2026</span> AÑO </div>
+            </div>
+        </section>
+
+        <!-- UBICACIÓN (MODO POR CONFIRMAR) -->
+        <section class="py-20 px-6 text-center bg-white">
+            <div class="mb-10 text-blue-400 flex justify-center text-4xl">📍</div>
+            <h2 class="font-title text-3xl mb-4">Recepción</h2>
+            <p class="text-gray-500 italic mb-6 italic">Salón por confirmar - Ciudad de México</p>
+            
+            <!-- Mapa interactivo placeholder -->
+            <div class="w-full max-w-3xl mx-auto h-64 bg-blue-50 rounded-2xl overflow-hidden mb-8 shadow-inner border border-blue-100 flex items-center justify-center">
+                <p class="text-blue-300 font-light px-10">El mapa se actualizará en cuanto se confirme el recinto.</p>
+            </div>
+
+            <div class="flex flex-wrap justify-center gap-4">
+                <a href="#" class="px-8 py-3 bg-blue-500 text-white rounded-full text-sm tracking-widest hover:bg-blue-600 shadow-lg transition">GOOGLE MAPS</a>
+                <a href="#" class="px-8 py-3 bg-[#33CCFF] text-white rounded-full text-sm tracking-widest hover:bg-blue-400 shadow-lg transition">WAZE</a>
+            </div>
+        </section>
+
+        <!-- IMAGEN SECUNDARIA -->
+        <section class="w-full h-[60vh]">
+            <img src="assets/mich1.jpg" alt="Michelle XV" class="w-full h-full object-cover">
+        </section>
+
+        <!-- RSVP (MISMA FUNCIONALIDAD XV FATIMA) -->
+        <section class="py-20 px-6 bg-white" id="confirmacion">
+            <div class="max-w-md mx-auto bg-[#F9FCFF] p-8 rounded-[2rem] shadow-xl border border-blue-50">
+                <h2 class="font-title text-2xl text-center mb-8">Confirmar Asistencia</h2>
+                <form class="space-y-4">
+                    <input type="text" placeholder="Nombre completo" class="w-full p-4 rounded-xl border-none ring-1 ring-blue-100 focus:ring-2 focus:ring-blue-300 outline-none">
+                    <select class="w-full p-4 rounded-xl border-none ring-1 ring-blue-100 focus:ring-2 focus:ring-blue-300 outline-none">
+                        <option>Confirmar cuántas personas</option>
+                        <option>1 Persona</option>
+                        <option>2 Personas</option>
+                    </select>
+                    <button type="button" class="w-full py-4 bg-blue-900 text-white rounded-xl font-bold tracking-widest hover:bg-blue-800 transition">ENVIAR WHATSAPP</button>
+                </form>
+            </div>
+        </section>
+
+        <!-- MURO DE DESEOS -->
+        <section class="py-20 px-6 bg-blue-50">
+            <h2 class="font-title text-2xl text-center mb-10">Muro de Buenos Deseos</h2>
+            <div class="max-w-2xl mx-auto space-y-6">
+                <textarea placeholder="Escribe tu mensaje para Michelle..." class="w-full p-6 rounded-2xl border-none shadow-sm h-32 outline-none focus:ring-2 focus:ring-blue-200"></textarea>
+                <button class="px-10 py-3 bg-white border border-blue-200 text-blue-500 rounded-full mx-auto block hover:bg-blue-500 hover:text-white transition">Publicar Deseo</button>
+            </div>
+        </section>
+
+        <footer class="py-10 text-center bg-white text-[10px] tracking-[0.3em] text-gray-400">
+            POWERED BY INVYTIA | PREMIUM EXPERIENCE
+        </footer>
+
+    </main>
+
+    <script>
+        function openInvitation() {
+            const overlay = document.getElementById('opening-overlay');
+            const main = document.getElementById('main-content');
+            
+            // Animación de mariposas (Confetti Custom)
+            const count = 40;
+            const defaults = {
+                origin: { y: 0.6 },
+                colors: ['#BEE3F8', '#90CDF4', '#FFFFFF'],
+                shapes: ['square'], // Simularemos mariposas con pequeños cuadrados o podrías usar SVGs
+            };
+
+            confetti({
+                ...defaults,
+                particleCount: count,
+                spread: 70,
+                scalar: 2,
+                ticks: 200
+            });
+
+            // Transición del contenido
+            overlay.style.opacity = '0';
+            setTimeout(() => {
+                overlay.classList.add('hidden');
+                main.classList.remove('opacity-0');
+                main.classList.add('opacity-100', 'transition-opacity', 'duration-1000');
+            }, 800);
+        }
+    </script>
+</body>
+</html>
