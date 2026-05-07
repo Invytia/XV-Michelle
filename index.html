@@ -5,8 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mis XV Años - Michelle | Invytia Premium</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Usaremos Framer Motion vía CDN para animaciones suaves de las mariposas -->
-    <script src="https://unpkg.com/framer-motion@10.16.4/dist/framer-motion.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Montserrat:wght@200;400;600&family=Great+Vibes&display=swap" rel="stylesheet">
     
     <style>
@@ -75,9 +73,21 @@
             border-radius: 20px;
             border: 1px solid rgba(255, 255, 255, 0.3);
         }
+
+        /* Animaciones CSS simples para mariposas flotantes */
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(5deg); }
+        }
+        @keyframes float-delayed {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-15px) rotate(-5deg); }
+        }
+        .animate-float { animation: float 6s ease-in-out infinite; }
+        .animate-float-delayed { animation: float-delayed 7s ease-in-out infinite 1s; }
     </style>
 </head>
-<body>
+<body style="overflow: hidden;">
 
     <!-- SECCIÓN 1: EL SOBRE (EXPERIENCIA DE APERTURA ULTRA PREMIUM) -->
     <div id="opening-overlay" class="fixed inset-0 z-[100] bg-[#D6EAF8] flex flex-col items-center justify-center overflow-hidden">
@@ -90,9 +100,7 @@
                 </div>
                 
                 <!-- Contenedor de Mariposas que salen al abrir -->
-                <div id="butterflies-container">
-                    <!-- Insertaremos mariposas SVGs dinámicamente con JS -->
-                </div>
+                <div id="butterflies-container"></div>
             </div>
         </div>
         <button onclick="openInvitation()" id="open-btn" class="mt-20 px-8 py-3 bg-white text-blue-600 rounded-full shadow-lg font-bold tracking-widest hover:bg-blue-50 transition-all duration-300 animate-pulse">
@@ -101,7 +109,7 @@
     </div>
 
     <!-- CONTENIDO PRINCIPAL (Oculto al inicio) -->
-    <main id="main-content" class="opacity-0 transition-opacity duration-1000">
+    <main id="main-content" class="opacity-0 transition-opacity duration-1000 hidden">
         
         <!-- HERO SECTION -->
         <section class="relative h-screen w-full overflow-hidden flex items-end justify-center">
@@ -121,7 +129,6 @@
 
         <!-- PADRES CON ACENTO DE MARIPOSA -->
         <section class="py-24 px-6 text-center bg-white relative">
-            <!-- Mariposa central sutil de fondo -->
             <svg class="absolute inset-0 m-auto w-64 h-64 opacity-5" viewBox="0 0 100 100"><path d="M50,30 C35,10 10,15 15,40 C20,60 45,70 50,90 C55,70 80,60 85,40 C90,15 65,10 50,30 Z" fill="#90CDF4"/></svg>
 
             <div class="max-w-3xl mx-auto relative z-10">
@@ -155,9 +162,7 @@
             <h2 class="font-title text-4xl mb-6 text-blue-950">La Recepción</h2>
             <p class="text-xl text-gray-600 mb-10">Salón por confirmar, Ciudad de México</p>
             
-            <!-- Mapa interactivo placeholder Premium -->
             <div class="w-full max-w-4xl mx-auto h-80 rounded-3xl overflow-hidden mb-10 shadow-2xl border-4 border-white relative flex items-center justify-center bg-gray-100">
-                <img src="https://maps.googleapis.com/maps/api/staticmap?center=CDMX,Mexico&zoom=11&size=800x400&key=YOUR_API_KEY_HERE" alt="Mapa CDMX" class="absolute inset-0 w-full h-full object-cover opacity-50">
                 <div class="absolute inset-0 bg-blue-900 opacity-20"></div>
                 <p class="relative z-10 font-title text-white bg-blue-900/50 px-6 py-3 rounded-full backdrop-blur-sm">Mapa disponible pronto</p>
             </div>
@@ -168,9 +173,8 @@
             </div>
         </section>
 
-        <!-- NUEVA SECCIÓN: ITINERARIO -->
+        <!-- ITINERARIO -->
         <section class="py-24 px-6 bg-[var(--azul-muy-claro)] text-center relative">
-            <!-- Mariposas decorativas en Itinerario -->
             <svg class="absolute bottom-10 left-10 w-10 h-10 butterfly-icon" viewBox="0 0 50 50"><path d="M10,20 C10,10 20,5 25,15 C30,5 40,10 40,20 C40,30 30,35 25,45 C20,35 10,30 10,20 Z" fill="currentColor"/></svg>
 
             <div class="max-w-2xl mx-auto">
@@ -199,7 +203,7 @@
             <div class="absolute inset-0 bg-gradient-to-t from-[var(--azul-muy-claro)] to-transparent"></div>
         </section>
 
-        <!-- RSVP (MISMA FUNCIONALIDAD premium) -->
+        <!-- RSVP -->
         <section class="py-24 px-6 bg-white" id="confirmacion">
             <div class="max-w-md mx-auto glass-card p-12 shadow-2xl border-blue-100">
                 <h2 class="font-title text-3xl text-center mb-10 text-blue-950">Confirmar</h2>
@@ -233,7 +237,7 @@
 
     <script>
         // Definimos el SVG de la mariposa para reusar
-        const butterflySVG = `<svg viewBox="0 0 50 50" class="absolute w-6 h-6"><path d="M10,20 C10,10 20,5 25,15 C30,5 40,10 40,20 C40,30 30,35 25,45 C20,35 10,30 10,20 Z" fill="#90CDF4" opacity="0.8"/></svg>`;
+        const butterflySVG = `<svg viewBox="0 0 50 50" class="absolute w-8 h-8"><path d="M10,20 C10,10 20,5 25,15 C30,5 40,10 40,20 C40,30 30,35 25,45 C20,35 10,30 10,20 Z" fill="#90CDF4" opacity="0.8"/></svg>`;
 
         function openInvitation() {
             const overlay = document.getElementById('opening-overlay');
@@ -242,33 +246,40 @@
             const main = document.getElementById('main-content');
             const openBtn = document.getElementById('open-btn');
 
+            // Prevenir doble click
+            openBtn.style.pointerEvents = 'none';
+
             // 1. Añadir clase para animar el sobre (abrir flap)
             wrapper.classList.add('open');
             openBtn.style.opacity = '0';
 
-            // 2. Crear y animar mariposas saliendo del sobre
-            for (let i = 0; i < 15; i++) {
+            // 2. Crear y animar mariposas saliendo del sobre con JS Nativo
+            for (let i = 0; i < 18; i++) {
                 const b = document.createElement('div');
                 b.innerHTML = butterflySVG;
                 const svgEl = b.firstChild;
                 
                 // Posición inicial (dentro del sobre)
-                svgEl.style.left = `160px`;
-                svgEl.style.top = `110px`;
+                svgEl.style.left = `150px`;
+                svgEl.style.top = `100px`;
                 
                 container.appendChild(svgEl);
 
-                // Animación con Framer Motion (vía CDN es directo)
-                FramerMotion.animate(svgEl, {
-                    x: (Math.random() - 0.5) * 400, // Dispersión horizontal
-                    y: -(Math.random() * 300 + 100), // Vuelo hacia arriba
-                    opacity: [0, 1, 0], // Aparecer y desaparecer
-                    scale: [0, Math.random() * 1 + 0.5, 0],
-                    rotate: (Math.random() - 0.5) * 90
-                }, {
-                    duration: Math.random() * 2 + 1,
-                    delay: Math.random() * 0.5 + 0.5,
-                    ease: "easeOut"
+                // Animación nativa (Web Animations API)
+                const translateX = (Math.random() - 0.5) * 600;
+                const translateY = -(Math.random() * 400 + 150);
+                const rotate = (Math.random() - 0.5) * 180;
+                const scale = Math.random() * 0.8 + 0.5;
+
+                svgEl.animate([
+                    { transform: 'translate(0px, 0px) scale(0) rotate(0deg)', opacity: 0 },
+                    { opacity: 1, offset: 0.2 },
+                    { transform: `translate(${translateX}px, ${translateY}px) scale(${scale}) rotate(${rotate}deg)`, opacity: 0 }
+                ], {
+                    duration: Math.random() * 2000 + 1500,
+                    delay: Math.random() * 400 + 300,
+                    easing: 'ease-out',
+                    fill: 'forwards'
                 });
             }
 
@@ -277,30 +288,19 @@
                 overlay.style.opacity = '0';
                 setTimeout(() => {
                     overlay.classList.add('hidden');
-                    main.classList.remove('opacity-0');
-                    main.classList.add('opacity-100');
+                    main.classList.remove('hidden');
+                    
+                    // Pequeño delay para permitir que el display:block se aplique antes de cambiar la opacidad
+                    requestAnimationFrame(() => {
+                        main.classList.remove('opacity-0');
+                        main.classList.add('opacity-100');
+                    });
+                    
                     // Permitir scroll de nuevo
                     document.body.style.overflow = 'auto';
                 }, 800);
             }, 2500); // Damos tiempo a que las mariposas vuelen
         }
-
-        // Bloquear scroll al inicio
-        document.body.style.overflow = 'hidden';
     </script>
-
-    <style>
-        /* Animaciones CSS simples para mariposas flotantes */
-        @keyframes float {
-            0%, 100% { transform: translateY(0px) rotate(0deg); }
-            50% { transform: translateY(-20px) rotate(5deg); }
-        }
-        @keyframes float-delayed {
-            0%, 100% { transform: translateY(0px) rotate(0deg); }
-            50% { transform: translateY(-15px) rotate(-5deg); }
-        }
-        .animate-float { animation: float 6s ease-in-out infinite; }
-        .animate-float-delayed { animation: float-delayed 7s ease-in-out infinite 1s; }
-    </style>
 </body>
 </html>
