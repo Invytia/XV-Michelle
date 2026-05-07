@@ -3,303 +3,261 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mis XV Años - Michelle | Invytia Premium</title>
+    <title>Mis XV Años Michelle | Invytia</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Montserrat:wght@200;400;600&family=Great+Vibes&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Montserrat:wght@200;300;400;600&family=Great+Vibes&display=swap" rel="stylesheet">
     
     <style>
         :root {
-            --azul-muy-claro: #F0F8FF;
-            --azul-pastel-1: #E1EFFE;
-            --azul-pastel-2: #BEE3F8;
-            --azul-premium: #90CDF4;
-            --azul-texto: #2C5282;
+            --azul-claro: #F0F7FF;
+            --azul-medio: #BEE3F8;
+            --azul-fuerte: #2B6CB0;
         }
-        body { font-family: 'Montserrat', sans-serif; background-color: var(--azul-muy-claro); color: var(--azul-texto); overflow-x: hidden; }
+        body { font-family: 'Montserrat', sans-serif; background-color: var(--azul-claro); color: #2D3748; overflow-x: hidden; }
         .font-title { font-family: 'Cinzel', serif; }
         .font-cursive { font-family: 'Great Vibes', cursive; }
         
-        /* Estilos del Sobre Premium */
-        #envelope-wrapper {
-            perspective: 1500px;
-            transition: opacity 0.8s ease-in-out;
-        }
+        /* Animación del Sobre */
+        #envelope-wrapper { perspective: 1500px; }
         #envelope {
-            position: relative;
-            width: 320px;
-            height: 220px;
-            background: white;
-            border-radius: 0 0 10px 10px;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
-            transform-style: preserve-3d;
-            transition: transform 1s ease-in-out;
-            cursor: pointer;
+            position: relative; width: 340px; height: 240px; background: white;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1); transition: transform 0.8s ease;
         }
-        #envelope-flap {
-            position: absolute;
-            top: 0; left: 0; width: 0; height: 0;
-            border-left: 160px solid transparent;
-            border-right: 160px solid transparent;
-            border-top: 110px solid var(--azul-pastel-1);
-            transform-origin: top;
-            transition: transform 0.8s ease-in-out 0.2s;
-            z-index: 2;
+        #flap {
+            position: absolute; top: 0; left: 0;
+            border-left: 170px solid transparent; border-right: 170px solid transparent;
+            border-top: 130px solid #E1EFFE;
+            transform-origin: top; transition: transform 0.8s ease 0.2s; z-index: 2;
         }
-        .open #envelope-flap { transform: rotateX(180deg); }
-        .open #envelope { transform: translateY(50px); }
+        .open-envelope #flap { transform: rotateX(180deg); }
+        .open-envelope #envelope { transform: translateY(30px); }
 
-        /* Contenedor de mariposas volando */
+        /* Contenedor de la explosión de mariposas */
         #butterflies-container {
-            position: absolute;
-            width: 100%; height: 100%;
-            top: 0; left: 0;
-            pointer-events: none;
-            z-index: 1;
-            opacity: 0;
-            transition: opacity 0.5s ease-in-out 0.8s;
-        }
-        .open #butterflies-container { opacity: 1; }
-
-        /* Estilo general de las mariposas SVG decorativas en el contenido */
-        .butterfly-icon {
-            fill: var(--azul-pastel-2);
-            opacity: 0.7;
+            position: absolute; width: 100%; height: 100%; top: 0; left: 0;
+            pointer-events: none; z-index: 10;
         }
 
-        /* Glassmorphism para secciones premium */
-        .glass-card {
-            background: rgba(255, 255, 255, 0.5);
-            backdrop-filter: blur(10px);
-            border-radius: 20px;
-            border: 1px solid rgba(255, 255, 255, 0.3);
+        /* Mariposas de fondo (Decoración) */
+        @keyframes flutter {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-15px) rotate(5deg); }
         }
-
-        /* Animaciones CSS simples para mariposas flotantes */
-        @keyframes float {
-            0%, 100% { transform: translateY(0px) rotate(0deg); }
-            50% { transform: translateY(-20px) rotate(5deg); }
-        }
-        @keyframes float-delayed {
-            0%, 100% { transform: translateY(0px) rotate(0deg); }
-            50% { transform: translateY(-15px) rotate(-5deg); }
-        }
-        .animate-float { animation: float 6s ease-in-out infinite; }
-        .animate-float-delayed { animation: float-delayed 7s ease-in-out infinite 1s; }
+        .bg-butterfly { animation: flutter 6s ease-in-out infinite; opacity: 0.6; }
     </style>
 </head>
-<body style="overflow: hidden;">
+<body class="overflow-hidden">
 
-    <!-- SECCIÓN 1: EL SOBRE (EXPERIENCIA DE APERTURA ULTRA PREMIUM) -->
-    <div id="opening-overlay" class="fixed inset-0 z-[100] bg-[#D6EAF8] flex flex-col items-center justify-center overflow-hidden">
-        <div id="envelope-wrapper" class="relative">
-            <div id="envelope">
-                <div id="envelope-flap"></div>
-                <div class="absolute inset-0 flex flex-col items-center justify-center p-4 z-10">
-                    <h2 class="font-title text-sm tracking-widest text-blue-900">Mis XV Años</h2>
-                    <h1 class="font-cursive text-4xl text-blue-600 mt-2">Michelle</h1>
+    <!-- 1. SOBRE DE INICIO -->
+    <div id="opening-screen" class="fixed inset-0 z-50 bg-[#EBF4FF] flex flex-col items-center justify-center transition-opacity duration-1000">
+        <div id="envelope-wrapper">
+            <div id="envelope" class="flex flex-col items-center justify-center rounded-b-xl">
+                <div id="flap"></div>
+                <!-- Título en el sobre -->
+                <div class="absolute z-10 text-center mt-8">
+                    <p class="font-cursive text-3xl text-blue-400">Mis XV Años</p>
+                    <h1 class="font-title text-2xl text-blue-900 tracking-widest mt-1">Michelle</h1>
                 </div>
-                
-                <!-- Contenedor de Mariposas que salen al abrir -->
+                <!-- Contenedor para las mariposas que volarán -->
                 <div id="butterflies-container"></div>
             </div>
         </div>
-        <button onclick="openInvitation()" id="open-btn" class="mt-20 px-8 py-3 bg-white text-blue-600 rounded-full shadow-lg font-bold tracking-widest hover:bg-blue-50 transition-all duration-300 animate-pulse">
-            ABRIR INVITACIÓN
+        <button id="btn-abrir" onclick="abrirInvitacion()" class="mt-16 px-8 py-3 bg-white text-blue-500 rounded-full shadow-md tracking-widest text-xs font-bold uppercase hover:bg-blue-50 transition">
+            Abrir Invitación
         </button>
     </div>
 
-    <!-- CONTENIDO PRINCIPAL (Oculto al inicio) -->
+    <!-- CONTENIDO DE LA INVITACIÓN -->
     <main id="main-content" class="opacity-0 transition-opacity duration-1000 hidden">
         
-        <!-- HERO SECTION -->
-        <section class="relative h-screen w-full overflow-hidden flex items-end justify-center">
-            <img src="assets/hero.jpg" alt="Michelle XV" class="absolute inset-0 w-full h-full object-cover object-center">
-            <div class="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-[var(--azul-muy-claro)]"></div>
+        <!-- HERO -->
+        <section class="relative h-[90vh] w-full flex items-end justify-center pb-20">
+            <img src="assets/hero.jpg" alt="Michelle XV" class="absolute inset-0 w-full h-full object-cover">
+            <div class="absolute inset-0 bg-gradient-to-t from-[var(--azul-claro)] via-transparent to-transparent"></div>
+            <div class="relative z-10 text-center">
+                <p class="font-cursive text-4xl text-blue-500 drop-shadow-md">Mis XV Años</p>
+                <h1 class="font-title text-6xl md:text-8xl text-blue-900 tracking-widest mt-2 drop-shadow-md">Michelle</h1>
+            </div>
+        </section>
+
+        <!-- PADRES -->
+        <section class="py-20 px-6 text-center relative bg-white">
+            <div class="max-w-2xl mx-auto border-y border-blue-100 py-12">
+                <p class="uppercase tracking-[0.2em] text-xs text-gray-400 mb-8">Con la bendición de mis padres</p>
+                <h3 class="font-title text-2xl text-blue-900 mb-4">Mariana Rodríguez</h3>
+                <p class="font-cursive text-3xl text-blue-300 mb-4">&</p>
+                <h3 class="font-title text-2xl text-blue-900">Ricardo Pérez</h3>
+            </div>
+        </section>
+
+        <!-- FECHA -->
+        <section class="py-20 px-6 text-center">
+            <h2 class="font-title text-4xl text-blue-900 mb-6">24 de Octubre</h2>
+            <div class="w-16 h-px bg-blue-300 mx-auto mb-6"></div>
+            <p class="font-light tracking-widest text-blue-500 uppercase text-sm">Dos mil veintiséis</p>
+        </section>
+
+        <!-- UBICACIÓN -->
+        <section class="py-20 px-6 text-center bg-white relative">
+            <!-- Mariposa decorativa -->
+            <div class="absolute top-10 right-10 w-12 h-12 text-blue-200 bg-butterfly" id="svg-mariposa-decor-1"></div>
+
+            <h2 class="font-title text-3xl mb-4 text-blue-900">Recepción</h2>
+            <p class="text-blue-500 font-light italic mb-8">Salón por confirmar - Ciudad de México</p>
             
-            <!-- Mariposas decorativas flotando en el Hero -->
-            <svg class="absolute top-20 left-10 w-16 h-16 butterfly-icon animate-float" viewBox="0 0 50 50"><path d="M10,20 C10,10 20,5 25,15 C30,5 40,10 40,20 C40,30 30,35 25,45 C20,35 10,30 10,20 Z" fill="none" stroke="currentColor" stroke-width="1"/></svg>
-            <svg class="absolute top-40 right-20 w-12 h-12 butterfly-icon animate-float-delayed" viewBox="0 0 50 50"><path d="M10,20 C10,10 20,5 25,15 C30,5 40,10 40,20 C40,30 30,35 25,45 C20,35 10,30 10,20 Z" fill="none" stroke="currentColor" stroke-width="1"/></svg>
-
-            <div class="relative text-center pb-16 z-10">
-                <p class="font-cursive text-4xl text-blue-500">Mis XV Años</p>
-                <h1 class="font-title text-6xl md:text-8xl text-blue-900 tracking-wider mt-2">Michelle</h1>
-                <div class="w-24 h-1 bg-blue-300 mx-auto mt-4 rounded-full"></div>
-            </div>
-        </section>
-
-        <!-- PADRES CON ACENTO DE MARIPOSA -->
-        <section class="py-24 px-6 text-center bg-white relative">
-            <svg class="absolute inset-0 m-auto w-64 h-64 opacity-5" viewBox="0 0 100 100"><path d="M50,30 C35,10 10,15 15,40 C20,60 45,70 50,90 C55,70 80,60 85,40 C90,15 65,10 50,30 Z" fill="#90CDF4"/></svg>
-
-            <div class="max-w-3xl mx-auto relative z-10">
-                <p class="uppercase tracking-[0.3em] text-xs text-gray-400 mb-8">Con la bendición de mis padres</p>
-                <div class="flex flex-col md:flex-row justify-center items-center gap-2 md:gap-10">
-                    <h3 class="font-title text-2xl text-blue-950">Mariana Rodríguez</h3>
-                    <span class="font-cursive text-4xl text-blue-300">&</span>
-                    <h3 class="font-title text-2xl text-blue-950">Ricardo Pérez</h3>
-                </div>
-            </div>
-        </section>
-
-        <!-- FECHA Y CUENTA REGRESIVA -->
-        <section class="py-20 bg-[var(--azul-pastel-1)] text-center px-6">
-            <div class="max-w-xl mx-auto glass-card p-10 shadow-inner">
-                <h2 class="font-title text-3xl text-blue-900 mb-6">Salva la Fecha</h2>
-                <div class="flex justify-center items-center gap-6 text-blue-800">
-                    <div class="text-6xl font-bold">24</div>
-                    <div class="text-left">
-                        <div class="text-xl uppercase tracking-widest">Octubre</div>
-                        <div class="text-4xl font-light">2026</div>
-                    </div>
-                </div>
-                <p class="font-cursive text-2xl text-blue-500 mt-6">Sábado</p>
-            </div>
-        </section>
-
-        <!-- UBICACIÓN (MODO POR CONFIRMAR CON MAPA) -->
-        <section class="py-24 px-6 text-center bg-white">
-            <svg class="mx-auto w-12 h-12 text-blue-400 mb-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
-            <h2 class="font-title text-4xl mb-6 text-blue-950">La Recepción</h2>
-            <p class="text-xl text-gray-600 mb-10">Salón por confirmar, Ciudad de México</p>
-            
-            <div class="w-full max-w-4xl mx-auto h-80 rounded-3xl overflow-hidden mb-10 shadow-2xl border-4 border-white relative flex items-center justify-center bg-gray-100">
-                <div class="absolute inset-0 bg-blue-900 opacity-20"></div>
-                <p class="relative z-10 font-title text-white bg-blue-900/50 px-6 py-3 rounded-full backdrop-blur-sm">Mapa disponible pronto</p>
+            <!-- Mapa Interactivo (Placeholder útil) -->
+            <div class="w-full max-w-3xl mx-auto h-72 bg-blue-50 border border-blue-100 rounded-xl overflow-hidden mb-8 flex items-center justify-center shadow-inner">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d120416.63462963172!2d-99.23933934789505!3d19.414930147717462!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x85ce0026db097507%3A0x54061076265ee841!2sCiudad%20de%20M%C3%A9xico%2C%20CDMX!5e0!3m2!1ses-419!2smx!4v1680000000000!5m2!1ses-419!2smx" width="100%" height="100%" style="border:0; opacity: 0.5;" allowfullscreen="" loading="lazy"></iframe>
             </div>
 
-            <div class="flex flex-wrap justify-center gap-4 relative z-10">
-                <a href="#" class="px-8 py-3 bg-blue-600 text-white rounded-full text-sm tracking-widest hover:bg-blue-700 shadow-lg transition">GOOGLE MAPS</a>
-                <a href="#" class="px-8 py-3 bg-[#33CCFF] text-white rounded-full text-sm tracking-widest hover:bg-blue-500 shadow-lg transition">WAZE</a>
+            <div class="flex flex-wrap justify-center gap-4">
+                <button class="px-8 py-3 bg-blue-600 text-white rounded-full text-xs tracking-widest hover:bg-blue-700 shadow-lg">GOOGLE MAPS</button>
+                <button class="px-8 py-3 bg-[#33CCFF] text-white rounded-full text-xs tracking-widest hover:bg-blue-400 shadow-lg">WAZE</button>
             </div>
         </section>
 
         <!-- ITINERARIO -->
-        <section class="py-24 px-6 bg-[var(--azul-muy-claro)] text-center relative">
-            <svg class="absolute bottom-10 left-10 w-10 h-10 butterfly-icon" viewBox="0 0 50 50"><path d="M10,20 C10,10 20,5 25,15 C30,5 40,10 40,20 C40,30 30,35 25,45 C20,35 10,30 10,20 Z" fill="currentColor"/></svg>
-
-            <div class="max-w-2xl mx-auto">
-                <h2 class="font-title text-4xl mb-12 text-blue-950">Itinerario</h2>
-                <div class="space-y-8 text-left glass-card p-10">
-                    <div class="flex items-center gap-4">
-                        <div class="w-4 h-4 rounded-full bg-blue-300"></div>
-                        <p class="text-lg font-semibold text-blue-800">Misa de Acción de Gracias</p>
-                    </div>
-                    <div class="flex items-center gap-4">
-                        <div class="w-4 h-4 rounded-full bg-blue-400"></div>
-                        <p class="text-lg font-semibold text-blue-800">Cóctel de Bienvenida</p>
-                    </div>
-                    <div class="flex items-center gap-4">
-                        <div class="w-4 h-4 rounded-full bg-blue-500"></div>
-                        <p class="text-lg font-semibold text-blue-800">Cena y Baile</p>
-                    </div>
+        <section class="py-20 px-6 text-center relative">
+            <h2 class="font-title text-3xl text-blue-900 mb-12">Itinerario</h2>
+            <div class="max-w-md mx-auto relative border-l border-blue-200 ml-8 md:mx-auto text-left pl-8 space-y-10">
+                <div class="relative">
+                    <div class="absolute -left-[37px] top-1 w-3 h-3 rounded-full bg-blue-400 shadow-[0_0_10px_rgba(144,205,244,0.8)]"></div>
+                    <p class="font-title text-lg text-blue-900">Recepción</p>
+                    <p class="text-blue-500 text-sm font-light italic">Horario por confirmar</p>
                 </div>
-                <p class="font-cursive text-3xl text-blue-400 mt-12">Programa por confirmar</p>
+                <div class="relative">
+                    <div class="absolute -left-[37px] top-1 w-3 h-3 rounded-full bg-blue-500 shadow-[0_0_10px_rgba(144,205,244,0.8)]"></div>
+                    <p class="font-title text-lg text-blue-900">Cena</p>
+                    <p class="text-blue-500 text-sm font-light italic">Horario por confirmar</p>
+                </div>
             </div>
+            
+            <p class="font-cursive text-3xl text-blue-400 mt-16">Programa por confirmar</p>
         </section>
 
-        <!-- IMAGEN SECUNDARIA CON MARCO PREMIUM -->
-        <section class="w-full h-[80vh] relative">
-            <img src="assets/mich1.jpg" alt="Michelle" class="w-full h-full object-cover">
-            <div class="absolute inset-0 bg-gradient-to-t from-[var(--azul-muy-claro)] to-transparent"></div>
+        <!-- FOTO SECUNDARIA -->
+        <section class="w-full h-[70vh] bg-white py-8 px-4">
+            <img src="assets/mich1.jpg" alt="Michelle" class="w-full h-full object-cover rounded-2xl shadow-xl">
         </section>
 
-        <!-- RSVP -->
-        <section class="py-24 px-6 bg-white" id="confirmacion">
-            <div class="max-w-md mx-auto glass-card p-12 shadow-2xl border-blue-100">
-                <h2 class="font-title text-3xl text-center mb-10 text-blue-950">Confirmar</h2>
-                <form class="space-y-5">
-                    <input type="text" placeholder="Nombre completo" class="w-full p-4 rounded-xl bg-blue-50 border-none outline-none focus:ring-2 focus:ring-blue-300">
-                    <select class="w-full p-4 rounded-xl bg-blue-50 border-none outline-none focus:ring-2 focus:ring-blue-300 text-gray-500">
-                        <option>Adultos</option>
-                        <option>1</option><option>2</option>
+        <!-- CONFIRMACIÓN DE ASISTENCIA (Estilo XV Fatima) -->
+        <section class="py-20 px-6 bg-[#F8FBFF]" id="confirmacion">
+            <!-- Mariposa decorativa -->
+            <div class="absolute left-10 w-10 h-10 text-blue-300 bg-butterfly" style="animation-delay: 1s;" id="svg-mariposa-decor-2"></div>
+
+            <div class="max-w-md mx-auto bg-white p-10 rounded-3xl shadow-[0_10px_40px_rgba(0,0,0,0.05)] border border-blue-50 relative z-10">
+                <h2 class="font-title text-2xl text-center mb-8 text-blue-900">Confirmar Asistencia</h2>
+                <form class="space-y-4">
+                    <input type="text" placeholder="Nombre completo" class="w-full p-4 rounded-xl bg-blue-50/50 border border-blue-100 outline-none focus:border-blue-300 font-light text-gray-700">
+                    <select class="w-full p-4 rounded-xl bg-blue-50/50 border border-blue-100 outline-none focus:border-blue-300 font-light text-gray-500">
+                        <option>Confirmar cuántas personas</option>
+                        <option>1 Persona</option>
+                        <option>2 Personas</option>
                     </select>
-                    <button type="button" class="w-full py-4 bg-blue-900 text-white rounded-xl font-bold tracking-widest hover:bg-blue-800 transition shadow-lg">CONFIRMAR WHATSAPP</button>
+                    <button type="button" class="w-full py-4 mt-4 bg-blue-900 text-white rounded-xl font-bold tracking-widest text-sm hover:bg-blue-800 transition">
+                        ENVIAR WHATSAPP
+                    </button>
                 </form>
             </div>
         </section>
 
-        <!-- MURO DE DESEOS -->
-        <section class="py-24 px-6 bg-[var(--azul-muy-claro)] text-center relative">
-            <svg class="absolute top-10 right-10 w-14 h-14 butterfly-icon opacity-40" viewBox="0 0 50 50"><path d="M10,20 C10,10 20,5 25,15 C30,5 40,10 40,20 C40,30 30,35 25,45 C20,35 10,30 10,20 Z" fill="currentColor"/></svg>
-
-            <h2 class="font-title text-3xl mb-10 text-blue-950">Buenos Deseos</h2>
+        <!-- MURO DE BUENOS DESEOS (Estilo XV Fatima) -->
+        <section class="py-20 px-6 bg-white text-center">
+            <h2 class="font-title text-2xl mb-8 text-blue-900">Buenos Deseos</h2>
             <div class="max-w-2xl mx-auto space-y-6">
-                <textarea placeholder="Déjale un mensaje a Michelle..." class="w-full h-40 p-6 rounded-2xl border-none shadow-inner glass-card outline-none focus:ring-2 focus:ring-blue-200"></textarea>
-                <button class="px-10 py-3 bg-white border border-blue-200 text-blue-600 rounded-full hover:bg-blue-600 hover:text-white transition shadow-md">PUBLICAR</button>
+                <textarea placeholder="Escribe un mensaje para Michelle..." class="w-full h-32 p-6 rounded-2xl bg-blue-50/50 border border-blue-100 outline-none focus:border-blue-300 font-light text-gray-700 resize-none"></textarea>
+                <button class="px-10 py-3 bg-white border border-blue-300 text-blue-500 rounded-full font-bold tracking-widest text-xs hover:bg-blue-50 transition shadow-sm">
+                    PUBLICAR DESEO
+                </button>
             </div>
         </section>
 
-        <footer class="py-10 text-center text-[10px] tracking-[0.4em] text-gray-400 bg-white">
-            INVYTIA PLATINUM EXPERIENCE | MARIPOSAS COLLECTION
+        <footer class="py-8 text-center text-[10px] tracking-[0.3em] text-gray-400 bg-white">
+            INVYTIA PREMIUM
         </footer>
 
     </main>
 
     <script>
-        // Definimos el SVG de la mariposa para reusar
-        const butterflySVG = `<svg viewBox="0 0 50 50" class="absolute w-8 h-8"><path d="M10,20 C10,10 20,5 25,15 C30,5 40,10 40,20 C40,30 30,35 25,45 C20,35 10,30 10,20 Z" fill="#90CDF4" opacity="0.8"/></svg>`;
+        // ESTE SVG ES 100% UNA MARIPOSA (Alas, cuerpo y antenitas)
+        const svgMariposa = `
+            <svg viewBox="0 0 24 24" fill="#90CDF4" stroke="#2B6CB0" stroke-width="0.5" class="w-full h-full">
+                <!-- Alas completas -->
+                <path d="M12,15.5 C9.5,14 6,17 3,17 C3,17 2,10 6,8 C9,6 12,11.5 12,11.5 C12,11.5 15,6 18,8 C22,10 21,17 21,17 C18,17 14.5,14 12,15.5 Z" />
+                <!-- Cuerpo central -->
+                <path d="M12,11.5 L12,19" stroke="#2B6CB0" stroke-width="1.5" stroke-linecap="round"/>
+                <!-- Antenas -->
+                <path d="M12,11.5 C12,11.5 10.5,8 10,6" stroke="#2B6CB0" stroke-width="1" stroke-linecap="round" fill="none"/>
+                <path d="M12,11.5 C12,11.5 13.5,8 14,6" stroke="#2B6CB0" stroke-width="1" stroke-linecap="round" fill="none"/>
+            </svg>
+        `;
 
-        function openInvitation() {
-            const overlay = document.getElementById('opening-overlay');
+        // Insertar mariposas decorativas en el HTML
+        document.getElementById('svg-mariposa-decor-1').innerHTML = svgMariposa;
+        document.getElementById('svg-mariposa-decor-2').innerHTML = svgMariposa;
+
+        function abrirInvitacion() {
+            const screen = document.getElementById('opening-screen');
             const wrapper = document.getElementById('envelope-wrapper');
             const container = document.getElementById('butterflies-container');
             const main = document.getElementById('main-content');
-            const openBtn = document.getElementById('open-btn');
+            const btn = document.getElementById('btn-abrir');
 
             // Prevenir doble click
-            openBtn.style.pointerEvents = 'none';
+            btn.style.pointerEvents = 'none';
+            btn.style.opacity = '0';
 
-            // 1. Añadir clase para animar el sobre (abrir flap)
-            wrapper.classList.add('open');
-            openBtn.style.opacity = '0';
+            // 1. Abrir el sobre
+            wrapper.classList.add('open-envelope');
 
-            // 2. Crear y animar mariposas saliendo del sobre con JS Nativo
-            for (let i = 0; i < 18; i++) {
-                const b = document.createElement('div');
-                b.innerHTML = butterflySVG;
-                const svgEl = b.firstChild;
+            // 2. Animar Mariposas Reales saliendo
+            for (let i = 0; i < 20; i++) {
+                const butterfly = document.createElement('div');
+                butterfly.innerHTML = svgMariposa;
                 
-                // Posición inicial (dentro del sobre)
-                svgEl.style.left = `150px`;
-                svgEl.style.top = `100px`;
+                // Estilo inicial dentro del sobre
+                butterfly.style.position = 'absolute';
+                butterfly.style.width = (Math.random() * 20 + 20) + 'px'; // Tamaños variados
+                butterfly.style.height = butterfly.style.width;
+                butterfly.style.left = '150px';
+                butterfly.style.top = '120px';
+                butterfly.style.opacity = '0';
                 
-                container.appendChild(svgEl);
+                container.appendChild(butterfly);
 
-                // Animación nativa (Web Animations API)
-                const translateX = (Math.random() - 0.5) * 600;
-                const translateY = -(Math.random() * 400 + 150);
-                const rotate = (Math.random() - 0.5) * 180;
-                const scale = Math.random() * 0.8 + 0.5;
+                // Rutas de vuelo aleatorias
+                const x = (Math.random() - 0.5) * 600;
+                const y = -(Math.random() * 500 + 200);
+                const rot = (Math.random() - 0.5) * 180;
 
-                svgEl.animate([
+                butterfly.animate([
                     { transform: 'translate(0px, 0px) scale(0) rotate(0deg)', opacity: 0 },
-                    { opacity: 1, offset: 0.2 },
-                    { transform: `translate(${translateX}px, ${translateY}px) scale(${scale}) rotate(${rotate}deg)`, opacity: 0 }
+                    { opacity: 1, offset: 0.1 },
+                    { opacity: 1, offset: 0.8 },
+                    { transform: \`translate(\${x}px, \${y}px) scale(1) rotate(\${rot}deg)\`, opacity: 0 }
                 ], {
-                    duration: Math.random() * 2000 + 1500,
-                    delay: Math.random() * 400 + 300,
+                    duration: Math.random() * 2000 + 2000,
+                    delay: Math.random() * 500 + 400,
                     easing: 'ease-out',
                     fill: 'forwards'
                 });
             }
 
-            // 3. Transición al contenido principal
+            // 3. Quitar el sobre y mostrar la invitación principal
             setTimeout(() => {
-                overlay.style.opacity = '0';
+                screen.style.opacity = '0';
                 setTimeout(() => {
-                    overlay.classList.add('hidden');
+                    screen.classList.add('hidden');
                     main.classList.remove('hidden');
                     
-                    // Pequeño delay para permitir que el display:block se aplique antes de cambiar la opacidad
+                    // Permitir el display block antes de hacer fade in
                     requestAnimationFrame(() => {
                         main.classList.remove('opacity-0');
                         main.classList.add('opacity-100');
+                        document.body.classList.remove('overflow-hidden');
                     });
-                    
-                    // Permitir scroll de nuevo
-                    document.body.style.overflow = 'auto';
-                }, 800);
-            }, 2500); // Damos tiempo a que las mariposas vuelen
+                }, 1000);
+            }, 3000); // Dar tiempo a que las mariposas terminen de volar
         }
     </script>
 </body>
