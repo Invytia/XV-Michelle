@@ -9,7 +9,7 @@
     
     <style>
         :root {
-            var(--azul-pantone): #9CCFEF; 
+            --azul-pantone: #9CCFEF; 
             --azul-claro: #E4F1FA;
             --azul-texto: #12284D;
         }
@@ -17,19 +17,30 @@
         .font-name { font-family: 'Playfair Display', serif; text-transform: none !important; }
         .font-cursive { font-family: 'Great Vibes', cursive; }
         
-        /* --- SOBRE --- */
+        /* --- SOBRE PREMIUM REFINADO --- */
         #envelope-wrapper { perspective: 1000px; position: relative; z-index: 60; }
         #envelope {
-            width: 300px; height: 200px; background: white; position: relative;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.1); border-radius: 0 0 10px 10px;
+            width: 320px; height: 220px; background: white; position: relative;
+            box-shadow: 0 25px 50px -12px rgba(0,0,0,0.15); border-radius: 0 0 12px 12px;
+            display: flex; align-items: center; justify-content: center;
         }
         #flap {
             position: absolute; top: 0; left: 0; width: 0; height: 0;
-            border-left: 150px solid transparent; border-right: 150px solid transparent;
-            border-top: 110px solid var(--azul-pantone); transform-origin: top;
-            transition: transform 0.6s ease; z-index: 2;
+            border-left: 160px solid transparent; border-right: 160px solid transparent;
+            /* Altura ajustada a 90px para liberar el texto */
+            border-top: 90px solid var(--azul-pantone); 
+            transform-origin: top;
+            transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1); z-index: 2;
         }
         .open #flap { transform: rotateX(180deg); }
+
+        /* Contenedor de texto con margen de seguridad para no ser pisado */
+        .envelope-content {
+            position: relative;
+            z-index: 1;
+            padding-top: 45px; 
+            text-align: center;
+        }
 
         /* --- STICKY AUDIO --- */
         #music-control {
@@ -83,9 +94,9 @@
 
     <div id="opening-overlay" class="fixed inset-0 z-[100] bg-[#E1EFFE] flex flex-col items-center justify-center transition-opacity duration-1000">
         <div id="envelope-wrapper">
-            <div id="envelope" class="flex flex-col items-center justify-end pb-2">
+            <div id="envelope">
                 <div id="flap"></div>
-                <div class="text-center z-10 px-4">
+                <div class="envelope-content">
                     <p class="font-cursive text-2xl text-blue-500">Mis XV Años</p>
                     <h2 class="font-cursive text-4xl text-blue-900 mt-1">Michelle</h2>
                 </div>
@@ -273,7 +284,6 @@
             }, 2500);
         }
 
-        // Se ajustó el observer para captar tanto anim-slide-right como anim-slide-left
         function initObserver() {
             const observer = new IntersectionObserver(entries => {
                 entries.forEach(entry => {
@@ -358,6 +368,3 @@
     </script>
 </body>
 </html>
-
-
-
