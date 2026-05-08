@@ -9,8 +9,7 @@
     
     <style>
         :root {
-            /* Se saturaron ligeramente los tonos de azul para darles más presencia */
-            --azul-pantone: #9CCFEF; 
+            var(--azul-pantone): #9CCFEF; 
             --azul-claro: #E4F1FA;
             --azul-texto: #12284D;
         }
@@ -56,15 +55,20 @@
             100% { transform: translate(0, 0) rotate(0deg); }
         }
 
-        /* --- ANIMACIÓN ITINERARIO --- */
-        .anim-slide-up {
+        /* --- ANIMACIÓN ITINERARIO ZIG-ZAG --- */
+        .anim-slide-right {
             opacity: 0;
-            transform: translateY(30px);
+            transform: translateX(-40px);
             transition: all 0.8s cubic-bezier(0.25, 1, 0.5, 1);
         }
-        .anim-slide-up.visible {
+        .anim-slide-left {
+            opacity: 0;
+            transform: translateX(40px);
+            transition: all 0.8s cubic-bezier(0.25, 1, 0.5, 1);
+        }
+        .anim-slide-right.visible, .anim-slide-left.visible {
             opacity: 1;
-            transform: translateY(0);
+            transform: translateX(0);
         }
 
         #main-content { opacity: 0; transition: opacity 1.5s ease; }
@@ -79,7 +83,7 @@
 
     <div id="opening-overlay" class="fixed inset-0 z-[100] bg-[#E1EFFE] flex flex-col items-center justify-center transition-opacity duration-1000">
         <div id="envelope-wrapper">
-            <div id="envelope" class="flex flex-col items-center justify-end pb-6">
+            <div id="envelope" class="flex flex-col items-center justify-end pb-2">
                 <div id="flap"></div>
                 <div class="text-center z-10 px-4">
                     <p class="font-cursive text-2xl text-blue-500">Mis XV Años</p>
@@ -109,11 +113,23 @@
         </section>
 
         <section class="py-10 bg-white text-center">
-            <div id="countdown" class="flex justify-center gap-4 md:gap-10">
-                <div class="flex flex-col"><span id="days" class="font-name text-3xl text-blue-900">00</span><span class="text-[10px] uppercase tracking-widest">Días</span></div>
-                <div class="flex flex-col"><span id="hours" class="font-name text-3xl text-blue-900">00</span><span class="text-[10px] uppercase tracking-widest">Hrs</span></div>
-                <div class="flex flex-col"><span id="minutes" class="font-name text-3xl text-blue-900">00</span><span class="text-[10px] uppercase tracking-widest">Min</span></div>
-                <div class="flex flex-col"><span id="seconds" class="font-name text-3xl text-blue-900">00</span><span class="text-[10px] uppercase tracking-widest">Seg</span></div>
+            <div id="countdown" class="flex justify-center gap-3 md:gap-8 px-4">
+                <div class="flex flex-col items-center justify-center bg-[#F0F7FF]/50 backdrop-blur-md border border-blue-100 shadow-[0_8px_20px_rgba(0,0,0,0.06)] rounded-2xl w-20 h-24 md:w-24 md:h-28">
+                    <span id="days" class="font-name text-3xl md:text-4xl text-blue-900">00</span>
+                    <span class="text-[10px] uppercase tracking-widest text-blue-600 mt-1">Días</span>
+                </div>
+                <div class="flex flex-col items-center justify-center bg-[#F0F7FF]/50 backdrop-blur-md border border-blue-100 shadow-[0_8px_20px_rgba(0,0,0,0.06)] rounded-2xl w-20 h-24 md:w-24 md:h-28">
+                    <span id="hours" class="font-name text-3xl md:text-4xl text-blue-900">00</span>
+                    <span class="text-[10px] uppercase tracking-widest text-blue-600 mt-1">Hrs</span>
+                </div>
+                <div class="flex flex-col items-center justify-center bg-[#F0F7FF]/50 backdrop-blur-md border border-blue-100 shadow-[0_8px_20px_rgba(0,0,0,0.06)] rounded-2xl w-20 h-24 md:w-24 md:h-28">
+                    <span id="minutes" class="font-name text-3xl md:text-4xl text-blue-900">00</span>
+                    <span class="text-[10px] uppercase tracking-widest text-blue-600 mt-1">Min</span>
+                </div>
+                <div class="flex flex-col items-center justify-center bg-[#F0F7FF]/50 backdrop-blur-md border border-blue-100 shadow-[0_8px_20px_rgba(0,0,0,0.06)] rounded-2xl w-20 h-24 md:w-24 md:h-28">
+                    <span id="seconds" class="font-name text-3xl md:text-4xl text-blue-900">00</span>
+                    <span class="text-[10px] uppercase tracking-widest text-blue-600 mt-1">Seg</span>
+                </div>
             </div>
         </section>
 
@@ -133,25 +149,52 @@
         </section>
 
         <section class="py-16 text-center relative bg-[var(--azul-claro)]">
-            <h2 class="font-name text-4xl text-blue-900">24 de Octubre</h2>
-            <p class="text-blue-600 italic mt-4">Salón Villagrand (salón 1)</p>
-            <p class="text-gray-400 text-[10px] mt-2 uppercase tracking-[0.3em]">Querétaro</p>
-            <div class="max-w-4xl mx-auto h-72 bg-blue-50 rounded-3xl overflow-hidden border border-blue-200 my-8 px-4 md:px-0 shadow-sm">
-                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3734.123!2d-100.44!3d20.6!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjDCsDM2JzAwLjAiTiAxMDDCsDI2JzI0LjAiVw!5e0!3m2!1ses-419!2smx!4v1700000000000" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+            <div class="absolute inset-0 z-0 opacity-20">
+                <img src="assets/salon.jpg" alt="Salón" class="w-full h-full object-cover">
             </div>
-            <a href="https://maps.app.goo.gl/wg5vAQ9miSq3mNVr9?g_st=ic" target="_blank" class="px-8 py-3 bg-blue-600 text-white rounded-full text-[10px] tracking-widest font-bold shadow-lg">VER EN MAPA</a>
+            
+            <div class="relative z-10">
+                <h2 class="font-name text-4xl text-blue-900">24 de Octubre</h2>
+                <p class="text-blue-700 font-bold mt-4">Recepción - Salón Villagrand (salón 1)</p>
+                <p class="text-gray-500 font-bold text-[10px] mt-2 uppercase tracking-[0.3em]">Querétaro</p>
+                <div class="max-w-4xl mx-auto h-72 bg-white/70 backdrop-blur-sm rounded-3xl overflow-hidden border border-blue-200 my-8 px-4 md:px-0 shadow-sm">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3734.123!2d-100.44!3d20.6!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjDCsDM2JzAwLjAiTiAxMDDCsDI2JzI0LjAiVw!5e0!3m2!1ses-419!2smx!4v1700000000000" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                </div>
+                <a href="https://maps.app.goo.gl/wg5vAQ9miSq3mNVr9?g_st=ic" target="_blank" class="px-8 py-3 bg-blue-600 text-white rounded-full text-[10px] tracking-widest font-bold shadow-lg">VER EN MAPA</a>
+            </div>
         </section>
 
         <section class="py-16 px-6 text-center bg-white">
             <h2 class="font-name text-3xl text-blue-900 mb-10">Itinerario</h2>
             <div class="max-w-md mx-auto space-y-8 text-left border-l-2 border-blue-200 pl-8">
-                <div class="relative anim-slide-up" style="transition-delay: 0.1s;"><div class="absolute -left-[41px] top-1 w-4 h-4 rounded-full bg-blue-300"></div><p class="font-name text-blue-900 text-lg">5:15 Recepción</p></div>
-                <div class="relative anim-slide-up" style="transition-delay: 0.2s;"><div class="absolute -left-[41px] top-1 w-4 h-4 rounded-full bg-blue-400"></div><p class="font-name text-blue-900 text-lg">5:30 Ceremonia</p></div>
-                <div class="relative anim-slide-up" style="transition-delay: 0.3s;"><div class="absolute -left-[41px] top-1 w-4 h-4 rounded-full bg-blue-300"></div><p class="font-name text-blue-900 text-lg">6:15 Coctail de bienvenida</p></div>
-                <div class="relative anim-slide-up" style="transition-delay: 0.4s;"><div class="absolute -left-[41px] top-1 w-4 h-4 rounded-full bg-blue-400"></div><p class="font-name text-blue-900 text-lg">6:30 Baile familiar y chambelanes</p></div>
-                <div class="relative anim-slide-up" style="transition-delay: 0.5s;"><div class="absolute -left-[41px] top-1 w-4 h-4 rounded-full bg-blue-300"></div><p class="font-name text-blue-900 text-lg">7:00 Cena</p></div>
-                <div class="relative anim-slide-up" style="transition-delay: 0.6s;"><div class="absolute -left-[41px] top-1 w-4 h-4 rounded-full bg-blue-400"></div><p class="font-name text-blue-900 text-lg">9:00 Baile sorpresa</p></div>
-                <div class="relative anim-slide-up" style="transition-delay: 0.7s;"><div class="absolute -left-[41px] top-1 w-4 h-4 rounded-full bg-blue-300"></div><p class="font-name text-blue-900 text-lg">11:00 Fin del evento</p></div>
+                <div class="relative anim-slide-right" style="transition-delay: 0.1s;">
+                    <div class="absolute -left-[41px] top-1 w-4 h-4 rounded-full bg-blue-300"></div>
+                    <p class="font-name text-blue-900 text-lg flex items-center gap-2"><span class="text-xl">🥂</span> 5:15 Recepción</p>
+                </div>
+                <div class="relative anim-slide-left" style="transition-delay: 0.2s;">
+                    <div class="absolute -left-[41px] top-1 w-4 h-4 rounded-full bg-blue-400"></div>
+                    <p class="font-name text-blue-900 text-lg flex items-center gap-2"><span class="text-xl">⛪</span> 5:30 Ceremonia</p>
+                </div>
+                <div class="relative anim-slide-right" style="transition-delay: 0.3s;">
+                    <div class="absolute -left-[41px] top-1 w-4 h-4 rounded-full bg-blue-300"></div>
+                    <p class="font-name text-blue-900 text-lg flex items-center gap-2"><span class="text-xl">🍸</span> 6:15 Coctail de bienvenida</p>
+                </div>
+                <div class="relative anim-slide-left" style="transition-delay: 0.4s;">
+                    <div class="absolute -left-[41px] top-1 w-4 h-4 rounded-full bg-blue-400"></div>
+                    <p class="font-name text-blue-900 text-lg flex items-center gap-2"><span class="text-xl">💃</span> 6:30 Baile familiar y chambelanes</p>
+                </div>
+                <div class="relative anim-slide-right" style="transition-delay: 0.5s;">
+                    <div class="absolute -left-[41px] top-1 w-4 h-4 rounded-full bg-blue-300"></div>
+                    <p class="font-name text-blue-900 text-lg flex items-center gap-2"><span class="text-xl">🍽️</span> 7:00 Cena</p>
+                </div>
+                <div class="relative anim-slide-left" style="transition-delay: 0.6s;">
+                    <div class="absolute -left-[41px] top-1 w-4 h-4 rounded-full bg-blue-400"></div>
+                    <p class="font-name text-blue-900 text-lg flex items-center gap-2"><span class="text-xl">✨</span> 9:00 Baile sorpresa</p>
+                </div>
+                <div class="relative anim-slide-right" style="transition-delay: 0.7s;">
+                    <div class="absolute -left-[41px] top-1 w-4 h-4 rounded-full bg-blue-300"></div>
+                    <p class="font-name text-blue-900 text-lg flex items-center gap-2"><span class="text-xl">🌙</span> 11:00 Fin del evento</p>
+                </div>
             </div>
         </section>
 
@@ -219,7 +262,6 @@
                 document.getElementById('opening-overlay').style.opacity = '0';
                 document.getElementById('main-content').classList.remove('hidden');
                 
-                // Iniciar el observer para las animaciones del itinerario una vez que se muestra la página
                 initObserver();
 
                 setTimeout(() => {
@@ -231,7 +273,7 @@
             }, 2500);
         }
 
-        // Función para activar animación del itinerario
+        // Se ajustó el observer para captar tanto anim-slide-right como anim-slide-left
         function initObserver() {
             const observer = new IntersectionObserver(entries => {
                 entries.forEach(entry => {
@@ -240,7 +282,7 @@
                     }
                 });
             }, { threshold: 0.1 });
-            document.querySelectorAll('.anim-slide-up').forEach(el => observer.observe(el));
+            document.querySelectorAll('.anim-slide-right, .anim-slide-left').forEach(el => observer.observe(el));
         }
 
         async function procesarConfirmacion() {
