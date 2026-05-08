@@ -9,14 +9,12 @@
     
     <style>
         :root {
-            /* Pantone Baby Blue 545-G */
-            --azul-pantone: #D1E9F6;
+            --azul-pantone: #D1E9F6; /* Pantone Baby Blue 545-G */
             --azul-claro: #F0F7FF;
-            --azul-premium: #90CDF4;
             --azul-texto: #1A365D;
         }
         body { font-family: 'Montserrat', sans-serif; background-color: var(--azul-claro); color: var(--azul-texto); margin: 0; overflow-x: hidden; }
-        .font-name { font-family: 'Playfair Display', serif; }
+        .font-name { font-family: 'Playfair Display', serif; text-transform: none !important; }
         .font-cursive { font-family: 'Great Vibes', cursive; }
         
         /* --- SOBRE --- */
@@ -35,11 +33,12 @@
 
         /* --- STICKY AUDIO BUTTON --- */
         #music-control {
-            position: fixed; bottom: 20px; right: 20px; z-index: 200;
-            padding: 10px 20px; background: white; border-radius: 30px;
+            position: fixed; bottom: 25px; right: 25px; z-index: 200;
+            padding: 12px 24px; background: white; border-radius: 50px;
             display: flex; align-items: center; justify-content: center;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1); cursor: pointer; display: none;
-            font-size: 10px; font-weight: bold; letter-spacing: 1px; color: var(--azul-texto);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1); cursor: pointer; display: none;
+            font-size: 10px; font-weight: 800; letter-spacing: 2px; color: #1A365D;
+            border: 1px solid var(--azul-pantone);
         }
 
         /* --- MARIPOSAS --- */
@@ -64,14 +63,13 @@
         <span id="music-text">PAUSAR</span>
     </div>
 
-    <!-- OVERLAY DEL SOBRE -->
     <div id="opening-overlay" class="fixed inset-0 z-[100] bg-[#E1EFFE] flex flex-col items-center justify-center transition-opacity duration-1000">
         <div id="envelope-wrapper">
-            <div id="envelope" class="flex flex-col items-center justify-end pb-4">
+            <div id="envelope" class="flex flex-col items-center justify-center pt-20 pb-4">
                 <div id="flap"></div>
-                <div class="text-center z-10 px-4 mb-1">
+                <div class="text-center z-10 px-4">
                     <p class="font-cursive text-2xl text-blue-400">Mis XV Años</p>
-                    <h2 class="font-name text-2xl text-blue-900 tracking-wide">Michelle</h2>
+                    <h2 class="font-name text-2xl text-blue-900">Michelle</h2>
                 </div>
             </div>
         </div>
@@ -80,20 +78,17 @@
         </button>
     </div>
 
-    <!-- CONTENIDO PRINCIPAL -->
     <main id="main-content" class="hidden relative">
         
-        <!-- HERO -->
         <section class="relative h-[95vh] w-full flex items-end justify-center pb-20 -mt-[15px]">
             <img src="assets/hero.jpg" alt="Michelle" class="absolute inset-0 w-full h-full object-cover">
             <div class="absolute inset-0 bg-gradient-to-t from-[var(--azul-claro)] via-transparent"></div>
             <div class="relative text-center">
                 <p class="font-cursive text-4xl text-blue-400">Mis XV Años</p>
-                <h1 class="font-name text-6xl md:text-8xl text-blue-900 tracking-wide">Michelle</h1>
+                <h1 class="font-name text-6xl md:text-8xl text-blue-900">Michelle</h1>
             </div>
         </section>
 
-        <!-- CUENTA REGRESIVA -->
         <section class="py-16 bg-white text-center">
             <div id="countdown" class="flex justify-center gap-4 md:gap-10">
                 <div class="flex flex-col"><span id="days" class="font-name text-3xl text-blue-900">00</span><span class="text-[10px] uppercase tracking-widest">Días</span></div>
@@ -103,14 +98,12 @@
             </div>
         </section>
 
-        <!-- FRASE (DEBAJO DE CUENTA ATRÁS) -->
-        <section class="py-12 px-8 text-center bg-white">
+        <section class="pb-20 px-8 text-center bg-white">
             <p class="font-cursive text-3xl text-blue-500 max-w-lg mx-auto leading-relaxed">
                 "Hay momentos inolvidables que se atesoran en el corazón para siempre. Gracias por ser parte de mi historia."
             </p>
         </section>
 
-        <!-- PADRES -->
         <section class="py-24 px-6 text-center bg-white relative">
             <div class="max-w-2xl mx-auto border-y border-blue-100 py-16">
                 <p class="uppercase tracking-[0.3em] text-[10px] text-gray-400 mb-8">Con la bendición de mis padres</p>
@@ -120,17 +113,15 @@
             </div>
         </section>
 
-        <!-- FECHA -->
         <section class="py-20 text-center relative bg-[var(--azul-claro)]">
             <h2 class="font-name text-4xl text-blue-900">24 de Octubre</h2>
             <div class="w-12 h-px bg-blue-300 mx-auto mt-6"></div>
         </section>
 
-        <!-- UBICACIÓN (QUERÉTARO) -->
         <section class="py-20 px-6 text-center bg-white relative">
             <h2 class="font-name text-3xl text-blue-900 mb-2">Recepción</h2>
             <p class="text-blue-500 italic mb-2">Salón Villagrand (salón 1)</p>
-            <p class="text-gray-400 text-xs mb-10 uppercase tracking-widest">Querétaro</p>
+            <p class="text-gray-400 text-[10px] mb-10 uppercase tracking-[0.3em]">Querétaro</p>
             
             <div class="max-w-4xl mx-auto h-72 bg-blue-50 rounded-3xl overflow-hidden shadow-inner border border-blue-100 mb-10">
                 <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3734.960249718469!2d-100.4137265!3d20.5896593!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x85d35b2e88a0026f%3A0xc3ec5700589d6e40!2sSal%C3%B3n%20Villagrand!5e0!3m2!1ses-419!2smx!4v1715115161000!5m2!1ses-419!2smx" width="100%" height="100%" style="border:0; opacity: 0.7;" allowfullscreen="" loading="lazy"></iframe>
@@ -139,7 +130,6 @@
             <a href="https://maps.app.goo.gl/3ip1DXR6ero2zRYK7?g_st=ic" target="_blank" class="px-8 py-3 bg-blue-600 text-white rounded-full text-[10px] tracking-widest font-bold shadow-lg">VER EN MAPA</a>
         </section>
 
-        <!-- SUGERENCIA DE REGALOS -->
         <section class="py-20 px-8 text-center bg-blue-50/30">
             <h2 class="font-name text-2xl text-blue-900 mb-6">Sugerencia de Regalos</h2>
             <p class="text-blue-500 font-light italic max-w-md mx-auto leading-relaxed">
@@ -147,34 +137,30 @@
             </p>
         </section>
 
-        <!-- ITINERARIO ACTUALIZADO -->
         <section class="py-20 px-6 text-center bg-white">
             <h2 class="font-name text-3xl text-blue-900 mb-12">Itinerario</h2>
             <div class="max-w-md mx-auto space-y-8 text-left border-l-2 border-blue-100 pl-8 ml-8 md:ml-auto md:mr-auto">
-                <div class="relative"><div class="absolute -left-[41px] top-1 w-4 h-4 rounded-full bg-blue-300"></div><p class="font-name text-blue-900">5:15 Recepción</p></div>
-                <div class="relative"><div class="absolute -left-[41px] top-1 w-4 h-4 rounded-full bg-blue-400"></div><p class="font-name text-blue-900">5:30 Ceremonia</p></div>
-                <div class="relative"><div class="absolute -left-[41px] top-1 w-4 h-4 rounded-full bg-blue-300"></div><p class="font-name text-blue-900">6:15 Coctail de bienvenida</p></div>
-                <div class="relative"><div class="absolute -left-[41px] top-1 w-4 h-4 rounded-full bg-blue-400"></div><p class="font-name text-blue-900">6:30 Baile familiar y chambelanes</p></div>
-                <div class="relative"><div class="absolute -left-[41px] top-1 w-4 h-4 rounded-full bg-blue-300"></div><p class="font-name text-blue-900">7:00 Cena</p></div>
-                <div class="relative"><div class="absolute -left-[41px] top-1 w-4 h-4 rounded-full bg-blue-400"></div><p class="font-name text-blue-900">9:00 Baile sorpresa</p></div>
-                <div class="relative"><div class="absolute -left-[41px] top-1 w-4 h-4 rounded-full bg-blue-300"></div><p class="font-name text-blue-900">11:00 Fin del evento</p></div>
+                <div class="relative"><div class="absolute -left-[41px] top-1 w-4 h-4 rounded-full bg-blue-300"></div><p class="font-name text-blue-900 text-lg">5:15 Recepción</p></div>
+                <div class="relative"><div class="absolute -left-[41px] top-1 w-4 h-4 rounded-full bg-blue-400"></div><p class="font-name text-blue-900 text-lg">5:30 Ceremonia</p></div>
+                <div class="relative"><div class="absolute -left-[41px] top-1 w-4 h-4 rounded-full bg-blue-300"></div><p class="font-name text-blue-900 text-lg">6:15 Coctail de bienvenida</p></div>
+                <div class="relative"><div class="absolute -left-[41px] top-1 w-4 h-4 rounded-full bg-blue-400"></div><p class="font-name text-blue-900 text-lg">6:30 Baile familiar y chambelanes</p></div>
+                <div class="relative"><div class="absolute -left-[41px] top-1 w-4 h-4 rounded-full bg-blue-300"></div><p class="font-name text-blue-900 text-lg">7:00 Cena</p></div>
+                <div class="relative"><div class="absolute -left-[41px] top-1 w-4 h-4 rounded-full bg-blue-400"></div><p class="font-name text-blue-900 text-lg">9:00 Baile sorpresa</p></div>
+                <div class="relative"><div class="absolute -left-[41px] top-1 w-4 h-4 rounded-full bg-blue-300"></div><p class="font-name text-blue-900 text-lg">11:00 Fin del evento</p></div>
             </div>
         </section>
 
-        <!-- FOTO SECUNDARIA -->
         <section class="w-full h-screen bg-white">
-            <img src="assets/mich1.jpg" alt="Michelle XV" class="w-full h-full object-cover shadow-2xl">
+            <img src="assets/mich1.jpg" alt="Michelle XV" class="w-full h-full object-cover">
         </section>
 
-        <!-- RSVP -->
         <section class="py-24 px-6 bg-[var(--azul-claro)]" id="confirmacion">
             <div class="max-w-md mx-auto bg-white p-12 rounded-[3rem] shadow-xl border border-blue-50 text-center">
-                <h2 class="font-name text-2xl mb-8 text-blue-900 tracking-wide">Confirmar</h2>
+                <h2 class="font-name text-2xl mb-8 text-blue-900 uppercase tracking-widest">Confirmar</h2>
                 <a href="https://wa.me/525539994414" target="_blank" class="block w-full py-4 bg-blue-900 text-white rounded-2xl font-bold tracking-[0.2em] text-[10px] shadow-lg">ENVIAR WHATSAPP</a>
             </div>
         </section>
 
-        <!-- MURO -->
         <section class="py-24 px-6 text-center bg-white">
             <h2 class="font-name text-2xl text-blue-900 mb-10">Muro de Deseos</h2>
             <div class="max-w-2xl mx-auto space-y-6">
@@ -183,7 +169,6 @@
             </div>
         </section>
 
-        <!-- CÓDIGO DE VESTIMENTA -->
         <section class="py-24 px-8 text-center bg-blue-50/30">
             <h2 class="font-name text-2xl text-blue-900 mb-6">Código de Vestimenta</h2>
             <p class="uppercase tracking-widest text-sm text-blue-800 font-bold mb-4">Formal</p>
@@ -208,7 +193,7 @@
 
             wrapper.classList.add('open');
             btn.style.display = 'none';
-            audio.play();
+            audio.play().catch(e => console.log("Audio play deferred"));
             musicBtn.style.display = 'flex';
 
             setTimeout(() => {
