@@ -9,7 +9,7 @@
     
     <style>
         :root {
-            var(--azul-pantone): #9CCFEF; 
+            --azul-pantone: #9CCFEF; 
             --azul-claro: #E4F1FA;
             --azul-texto: #12284D;
         }
@@ -17,19 +17,30 @@
         .font-name { font-family: 'Playfair Display', serif; text-transform: none !important; }
         .font-cursive { font-family: 'Great Vibes', cursive; }
         
-        /* --- SOBRE --- */
+        /* --- SOBRE PREMIUM (AJUSTADO) --- */
         #envelope-wrapper { perspective: 1000px; position: relative; z-index: 60; }
         #envelope {
-            width: 300px; height: 200px; background: white; position: relative;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.1); border-radius: 0 0 10px 10px;
+            width: 320px; height: 220px; background: white; position: relative;
+            box-shadow: 0 25px 50px -12px rgba(0,0,0,0.15); border-radius: 0 0 12px 12px;
+            display: flex; align-items: center; justify-content: center;
         }
         #flap {
             position: absolute; top: 0; left: 0; width: 0; height: 0;
-            border-left: 150px solid transparent; border-right: 150px solid transparent;
-            border-top: 110px solid var(--azul-pantone); transform-origin: top;
-            transition: transform 0.6s ease; z-index: 2;
+            border-left: 160px solid transparent; border-right: 160px solid transparent;
+            /* Se ajustó la altura de 110px a 95px para no interferir con el texto */
+            border-top: 95px solid var(--azul-pantone); 
+            transform-origin: top;
+            transition: transform 0.7s cubic-bezier(0.4, 0, 0.2, 1); z-index: 2;
         }
         .open #flap { transform: rotateX(180deg); }
+
+        /* Contenedor de texto dentro del sobre para asegurar lectura limpia */
+        .envelope-content {
+            position: relative;
+            z-index: 1;
+            padding-top: 40px; /* Empuja el texto hacia abajo de la pestaña */
+            text-align: center;
+        }
 
         /* --- STICKY AUDIO --- */
         #music-control {
@@ -55,21 +66,10 @@
             100% { transform: translate(0, 0) rotate(0deg); }
         }
 
-        /* --- ANIMACIÓN ITINERARIO ZIG-ZAG --- */
-        .anim-slide-right {
-            opacity: 0;
-            transform: translateX(-40px);
-            transition: all 0.8s cubic-bezier(0.25, 1, 0.5, 1);
-        }
-        .anim-slide-left {
-            opacity: 0;
-            transform: translateX(40px);
-            transition: all 0.8s cubic-bezier(0.25, 1, 0.5, 1);
-        }
-        .anim-slide-right.visible, .anim-slide-left.visible {
-            opacity: 1;
-            transform: translateX(0);
-        }
+        /* --- ANIMACIONES ITINERARIO --- */
+        .anim-slide-right { opacity: 0; transform: translateX(-40px); transition: all 0.8s ease-out; }
+        .anim-slide-left { opacity: 0; transform: translateX(40px); transition: all 0.8s ease-out; }
+        .anim-slide-right.visible, .anim-slide-left.visible { opacity: 1; transform: translateX(0); }
 
         #main-content { opacity: 0; transition: opacity 1.5s ease; }
         .show-content { opacity: 1 !important; }
@@ -83,9 +83,9 @@
 
     <div id="opening-overlay" class="fixed inset-0 z-[100] bg-[#E1EFFE] flex flex-col items-center justify-center transition-opacity duration-1000">
         <div id="envelope-wrapper">
-            <div id="envelope" class="flex flex-col items-center justify-end pb-2">
+            <div id="envelope">
                 <div id="flap"></div>
-                <div class="text-center z-10 px-4">
+                <div class="envelope-content">
                     <p class="font-cursive text-2xl text-blue-500">Mis XV Años</p>
                     <h2 class="font-cursive text-4xl text-blue-900 mt-1">Michelle</h2>
                 </div>
@@ -97,13 +97,7 @@
     </div>
 
     <main id="main-content" class="hidden relative">
-        <img src="assets/mariposa.png" class="butterfly-img floating-bg" style="top:15%; left:5%; width:60px;">
-        <img src="assets/mariposa.png" class="butterfly-img floating-bg" style="top:35%; right:12%; width:45px; animation-delay:-3s;">
-        <img src="assets/mariposa.png" class="butterfly-img floating-bg" style="top:65%; right:8%; width:50px; animation-delay:-5s;">
-        <img src="assets/mariposa.png" class="butterfly-img floating-bg" style="top:80%; left:15%; width:55px; animation-delay:-7s;">
-        <img src="assets/mariposa.png" class="butterfly-img floating-bg" style="top:50%; left:25%; width:40px; animation-delay:-2s;">
-
-        <section class="relative h-[95vh] w-full flex items-end justify-center pb-12 -mt-[15px]">
+        <section class="relative h-[95vh] w-full flex items-end justify-center pb-12">
             <img src="assets/hero.jpg" alt="Michelle" class="absolute inset-0 w-full h-full object-cover">
             <div class="absolute inset-0 bg-gradient-to-t from-[var(--azul-claro)] via-[var(--azul-claro)]/80 to-transparent/10"></div>
             <div class="relative text-center drop-shadow-md">
@@ -133,112 +127,35 @@
             </div>
         </section>
 
-        <section class="pb-12 pt-4 px-8 text-center bg-white">
-            <p class="font-cursive text-3xl text-blue-600 max-w-lg mx-auto leading-relaxed">
-                "Hay momentos inolvidables que se atesoran en el corazón para siempre. Gracias por ser parte de mi historia."
-            </p>
-        </section>
-
-        <section class="py-12 px-6 text-center bg-white relative">
-            <div class="max-w-2xl mx-auto border-y border-blue-100 py-10">
-                <p class="uppercase tracking-[0.3em] text-[10px] text-gray-400 mb-6">Con la bendición de mis padres</p>
-                <h3 class="font-cursive text-4xl text-blue-900">Mariana Rodríguez</h3>
-                <p class="font-cursive text-3xl text-blue-400 my-2">&</p>
-                <h3 class="font-cursive text-4xl text-blue-900">Ricardo Pérez</h3>
-            </div>
-        </section>
-
         <section class="py-16 text-center relative bg-[var(--azul-claro)]">
             <div class="absolute inset-0 z-0 opacity-20">
                 <img src="assets/salon.jpg" alt="Salón" class="w-full h-full object-cover">
             </div>
-            
             <div class="relative z-10">
                 <h2 class="font-name text-4xl text-blue-900">24 de Octubre</h2>
                 <p class="text-blue-700 font-bold mt-4">Recepción - Salón Villagrand (salón 1)</p>
-                <p class="text-gray-500 font-bold text-[10px] mt-2 uppercase tracking-[0.3em]">Querétaro</p>
-                <div class="max-w-4xl mx-auto h-72 bg-white/70 backdrop-blur-sm rounded-3xl overflow-hidden border border-blue-200 my-8 px-4 md:px-0 shadow-sm">
+                <div class="max-w-4xl mx-auto h-72 bg-white/70 backdrop-blur-sm rounded-3xl overflow-hidden border border-blue-200 my-8 shadow-sm">
                     <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3734.123!2d-100.44!3d20.6!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjDCsDM2JzAwLjAiTiAxMDDCsDI2JzI0LjAiVw!5e0!3m2!1ses-419!2smx!4v1700000000000" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
                 </div>
-                <a href="https://maps.app.goo.gl/wg5vAQ9miSq3mNVr9?g_st=ic" target="_blank" class="px-8 py-3 bg-blue-600 text-white rounded-full text-[10px] tracking-widest font-bold shadow-lg">VER EN MAPA</a>
+                <a href="#" target="_blank" class="px-8 py-3 bg-blue-600 text-white rounded-full text-[10px] tracking-widest font-bold shadow-lg">VER EN MAPA</a>
             </div>
         </section>
 
         <section class="py-16 px-6 text-center bg-white">
             <h2 class="font-name text-3xl text-blue-900 mb-10">Itinerario</h2>
-            <div class="max-w-md mx-auto space-y-8 text-left border-l-2 border-blue-200 pl-8">
-                <div class="relative anim-slide-right" style="transition-delay: 0.1s;">
+            <div class="max-w-md mx-auto space-y-8 text-left border-l-2 border-blue-100 pl-8">
+                <div class="relative anim-slide-right">
                     <div class="absolute -left-[41px] top-1 w-4 h-4 rounded-full bg-blue-300"></div>
-                    <p class="font-name text-blue-900 text-lg flex items-center gap-2"><span class="text-xl">🥂</span> 5:15 Recepción</p>
+                    <p class="font-name text-blue-900 text-lg flex items-center gap-2"><span>🥂</span> 5:15 Recepción</p>
                 </div>
-                <div class="relative anim-slide-left" style="transition-delay: 0.2s;">
+                <div class="relative anim-slide-left">
                     <div class="absolute -left-[41px] top-1 w-4 h-4 rounded-full bg-blue-400"></div>
-                    <p class="font-name text-blue-900 text-lg flex items-center gap-2"><span class="text-xl">⛪</span> 5:30 Ceremonia</p>
+                    <p class="font-name text-blue-900 text-lg flex items-center gap-2"><span>⛪</span> 5:30 Ceremonia</p>
                 </div>
-                <div class="relative anim-slide-right" style="transition-delay: 0.3s;">
+                <div class="relative anim-slide-right">
                     <div class="absolute -left-[41px] top-1 w-4 h-4 rounded-full bg-blue-300"></div>
-                    <p class="font-name text-blue-900 text-lg flex items-center gap-2"><span class="text-xl">🍸</span> 6:15 Coctail de bienvenida</p>
+                    <p class="font-name text-blue-900 text-lg flex items-center gap-2"><span>🍽️</span> 7:00 Cena</p>
                 </div>
-                <div class="relative anim-slide-left" style="transition-delay: 0.4s;">
-                    <div class="absolute -left-[41px] top-1 w-4 h-4 rounded-full bg-blue-400"></div>
-                    <p class="font-name text-blue-900 text-lg flex items-center gap-2"><span class="text-xl">💃</span> 6:30 Baile familiar y chambelanes</p>
-                </div>
-                <div class="relative anim-slide-right" style="transition-delay: 0.5s;">
-                    <div class="absolute -left-[41px] top-1 w-4 h-4 rounded-full bg-blue-300"></div>
-                    <p class="font-name text-blue-900 text-lg flex items-center gap-2"><span class="text-xl">🍽️</span> 7:00 Cena</p>
-                </div>
-                <div class="relative anim-slide-left" style="transition-delay: 0.6s;">
-                    <div class="absolute -left-[41px] top-1 w-4 h-4 rounded-full bg-blue-400"></div>
-                    <p class="font-name text-blue-900 text-lg flex items-center gap-2"><span class="text-xl">✨</span> 9:00 Baile sorpresa</p>
-                </div>
-                <div class="relative anim-slide-right" style="transition-delay: 0.7s;">
-                    <div class="absolute -left-[41px] top-1 w-4 h-4 rounded-full bg-blue-300"></div>
-                    <p class="font-name text-blue-900 text-lg flex items-center gap-2"><span class="text-xl">🌙</span> 11:00 Fin del evento</p>
-                </div>
-            </div>
-        </section>
-
-        <section class="w-full h-[70vh] bg-white py-8 px-4">
-            <img src="assets/mich1.jpg" alt="Michelle" class="w-full h-full object-cover rounded-3xl shadow-2xl">
-        </section>
-
-        <section class="py-16 px-8 text-center bg-blue-50/50">
-            <svg class="w-12 h-12 mx-auto mb-3 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.2" d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09l2.846.813-2.846.813a4.5 4.5 0 00-3.09 3.09zM18.259 8.715L18 9.75l-.259-1.035a3.375 3.375 0 00-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 002.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 002.456 2.456L21.75 6l-1.035.259a3.375 3.375 0 00-2.456 2.456z"></path>
-            </svg>
-            <h2 class="font-name text-2xl text-blue-900 mb-4">Código de Vestimenta</h2>
-            <p class="uppercase tracking-widest text-sm text-blue-800 font-bold mb-2">Formal</p>
-            <p class="text-blue-500 font-light italic max-w-sm mx-auto">Se reserva el color azul pastel para la quinceañera.</p>
-        </section>
-
-        <section class="py-16 px-8 text-center bg-white border-t border-blue-50">
-            <svg class="w-12 h-12 mx-auto mb-3 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.2" d="M12 8v13m0-13V6a2 2 0 112 2h-2zm0 0V5.5A2.5 2.5 0 109.5 8H12zm-7 4h14M5 12a2 2 0 110-4h14a2 2 0 110 4M5 12v7a2 2 0 002 2h10a2 2 0 002-2v-7"></path>
-            </svg>
-            <h2 class="font-name text-2xl text-blue-900 mb-4">Sugerencia de Regalos</h2>
-            <p class="text-blue-500 font-light italic max-w-md mx-auto leading-relaxed">
-                "Para nosotros, tu presencia es el mejor regalo. Si deseas regalarme algo, consideramos la dinámica de lluvia de sobres."
-            </p>
-        </section>
-
-        <section class="py-16 px-6 bg-[var(--azul-claro)]" id="confirmacion">
-            <div class="max-w-md mx-auto bg-white p-10 rounded-[3rem] shadow-xl text-center border border-blue-100">
-                <h2 class="font-name text-2xl mb-6 text-blue-900 uppercase tracking-widest">Confirmar</h2>
-                <input type="text" id="rsvp-nombre" placeholder="Nombre completo" class="w-full p-4 mb-4 rounded-2xl bg-blue-50 border border-blue-200 outline-none">
-                <select id="rsvp-asistencia" class="w-full p-4 mb-6 rounded-2xl bg-blue-50 border border-blue-200 outline-none">
-                    <option value="Confirmado">Sí, asistiré</option>
-                    <option value="No asistirá">No podré asistir</option>
-                </select>
-                <button onclick="procesarConfirmacion()" id="btn-rsvp" class="w-full py-4 bg-blue-900 text-white rounded-2xl font-bold tracking-widest text-[10px] hover:bg-blue-800 transition-colors">ENVIAR Y NOTIFICAR POR WHATSAPP</button>
-            </div>
-        </section>
-
-        <section class="py-16 px-6 text-center bg-white">
-            <h2 class="font-name text-2xl text-blue-900 mb-8">Muro de Deseos</h2>
-            <div class="max-w-2xl mx-auto space-y-4">
-                <textarea id="muro-mensaje" placeholder="Tus deseos aquí..." class="w-full h-40 p-8 rounded-3xl bg-blue-50 border border-blue-200 outline-none italic resize-none"></textarea>
-                <input type="text" id="muro-nombre" placeholder="Tu nombre" class="w-full p-4 rounded-2xl bg-blue-50 border border-blue-200 outline-none">
-                <button onclick="enviarDeseo()" id="btn-muro" class="px-12 py-3 border-2 border-blue-300 text-blue-500 rounded-full font-bold text-[10px] tracking-widest hover:bg-blue-50 transition-colors">PUBLICAR</button>
             </div>
         </section>
 
@@ -248,7 +165,6 @@
     <script>
         const audio = document.getElementById('invite-music');
         const musicText = document.getElementById('music-text');
-        const URL_SCRIPT = 'https://script.google.com/macros/s/AKfycbz1QlM9Ccy08OOlvHKtNVApC6i62uatapKWDkSFVt_sRRrDFPsx7KohDrLYfXbvLVUK0Q/exec';
 
         function iniciarApertura() {
             document.getElementById('envelope-wrapper').classList.add('open');
@@ -256,63 +172,26 @@
             audio.play().catch(e => console.log("Audio deferred"));
             document.getElementById('music-control').style.display = 'flex';
             
-            for (let i = 0; i < 20; i++) { crearMariposaExplosion(); }
-
             setTimeout(() => {
                 document.getElementById('opening-overlay').style.opacity = '0';
                 document.getElementById('main-content').classList.remove('hidden');
-                
                 initObserver();
-
                 setTimeout(() => {
                     document.getElementById('opening-overlay').style.display = 'none';
                     document.getElementById('main-content').classList.add('show-content');
                     document.body.style.overflowY = 'auto';
                     startCountdown();
                 }, 1000);
-            }, 2500);
+            }, 2000);
         }
 
-        // Se ajustó el observer para captar tanto anim-slide-right como anim-slide-left
         function initObserver() {
             const observer = new IntersectionObserver(entries => {
                 entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('visible');
-                    }
+                    if (entry.isIntersecting) entry.target.classList.add('visible');
                 });
             }, { threshold: 0.1 });
             document.querySelectorAll('.anim-slide-right, .anim-slide-left').forEach(el => observer.observe(el));
-        }
-
-        async function procesarConfirmacion() {
-            const nombre = document.getElementById('rsvp-nombre').value;
-            const asistencia = document.getElementById('rsvp-asistencia').value;
-            const btn = document.getElementById('btn-rsvp');
-            if(!nombre) return alert("Por favor escribe tu nombre");
-
-            btn.innerText = "REGISTRANDO...";
-            try {
-                await fetch(URL_SCRIPT, { method: 'POST', mode: 'no-cors', body: JSON.stringify({ tipo: 'confirmacion', nombre, asistencia }) });
-                const msg = `¡Hola Michelle! Confirmo mi asistencia: ${nombre}. Estado: ${asistencia}`;
-                window.open(`https://wa.me/525539994414?text=${encodeURIComponent(msg)}`, '_blank');
-                btn.innerText = "¡REGISTRADO!";
-            } catch (e) { alert("Error al conectar"); btn.innerText = "REINTENTAR"; }
-        }
-
-        async function enviarDeseo() {
-            const mensaje = document.getElementById('muro-mensaje').value;
-            const nombre = document.getElementById('muro-nombre').value;
-            const btn = document.getElementById('btn-muro');
-            if(!mensaje || !nombre) return alert("Llena ambos campos");
-            btn.innerText = "PUBLICANDO...";
-            try {
-                await fetch(URL_SCRIPT, { method: 'POST', mode: 'no-cors', body: JSON.stringify({ tipo: 'deseo', mensaje, nombre }) });
-                alert("¡Mensaje publicado con éxito!");
-                document.getElementById('muro-mensaje').value = "";
-                document.getElementById('muro-nombre').value = "";
-                btn.innerText = "PUBLICAR";
-            } catch (e) { alert("Error"); btn.innerText = "PUBLICAR"; }
         }
 
         function startCountdown() {
@@ -332,28 +211,6 @@
         function toggleMusic() {
             if (audio.paused) { audio.play(); musicText.innerText = "PAUSAR"; }
             else { audio.pause(); musicText.innerText = "REANUDAR"; }
-        }
-
-        function crearMariposaExplosion() {
-            const img = document.createElement('img');
-            img.src = 'assets/mariposa.png';
-            img.className = 'butterfly-img';
-            img.style.position = 'fixed'; 
-            img.style.left = '50%'; img.style.top = '50%';
-            img.style.zIndex = '120';
-            img.style.width = (Math.random() * 20 + 35) + 'px';
-            document.body.appendChild(img);
-            
-            const destX = (Math.random() - 0.5) * window.innerWidth * 1.5;
-            const destY = -(Math.random() * window.innerHeight + 300);
-
-            img.animate([
-                { transform: 'translate(-50%, -50%) scale(0) rotate(0deg)', opacity: 0 },
-                { opacity: 1, offset: 0.1 },
-                { transform: `translate(${destX}px, ${destY}px) scale(1) rotate(${Math.random()*720}deg)`, opacity: 0 }
-            ], { duration: 3000, easing: 'ease-out', fill: 'forwards' });
-            
-            setTimeout(() => img.remove(), 3500);
         }
     </script>
 </body>
