@@ -48,10 +48,11 @@
             animation: aleteo 0.5s ease-in-out infinite alternate;
         }
         @keyframes aleteo { from { transform: scaleX(1) rotate(0deg); } to { transform: scaleX(0.7) rotate(5deg); } }
-        .floating-bg { animation: moveSlow 20s linear infinite; opacity: 0.6; }
+        
+        .floating-bg { animation: moveSlow 25s linear infinite; opacity: 0.5; }
         @keyframes moveSlow {
             0% { transform: translate(0, 0) rotate(0deg); }
-            33% { transform: translate(30vw, -10vh) rotate(15deg); }
+            50% { transform: translate(20vw, -15vh) rotate(10deg); }
             100% { transform: translate(0, 0) rotate(0deg); }
         }
 
@@ -75,14 +76,14 @@
                 </div>
             </div>
         </div>
-        <button onclick="iniciarApertura()" id="btn-abrir" class="mt-12 px-10 py-3 bg-white text-blue-500 rounded-full shadow-lg font-bold tracking-[0.2em] text-xs">
+        <button onclick="iniciarApertura()" id="btn-abrir" class="mt-12 px-10 py-3 bg-white text-blue-500 rounded-full shadow-lg font-bold tracking-[0.2em] text-xs hover:scale-105 transition-all">
             ABRIR INVITACIÓN
         </button>
     </div>
 
     <main id="main-content" class="hidden relative">
-        <img src="assets/mariposa.png" class="butterfly-img floating-bg" style="top:15%; left:5%;">
-        <img src="assets/mariposa.png" class="butterfly-img floating-bg" style="top:60%; right:5%; animation-delay:-5s;">
+        <img src="assets/mariposa.png" class="butterfly-img floating-bg" style="top:10%; left:10%; width:60px;">
+        <img src="assets/mariposa.png" class="butterfly-img floating-bg" style="top:50%; right:5%; width:50px; animation-delay:-7s;">
 
         <section class="relative h-[95vh] w-full flex items-end justify-center pb-20 -mt-[15px]">
             <img src="assets/hero.jpg" alt="Michelle" class="absolute inset-0 w-full h-full object-cover">
@@ -102,12 +103,6 @@
             </div>
         </section>
 
-        <section class="pb-20 px-8 text-center bg-white">
-            <p class="font-cursive text-3xl text-blue-500 max-w-lg mx-auto leading-relaxed">
-                "Hay momentos inolvidables que se atesoran en el corazón para siempre. Gracias por ser parte de mi historia."
-            </p>
-        </section>
-
         <section class="py-24 px-6 text-center bg-white relative">
             <div class="max-w-2xl mx-auto border-y border-blue-100 py-16">
                 <p class="uppercase tracking-[0.3em] text-[10px] text-gray-400 mb-8">Con la bendición de mis padres</p>
@@ -119,26 +114,24 @@
 
         <section class="py-20 text-center relative bg-[var(--azul-claro)]">
             <h2 class="font-name text-4xl text-blue-900">24 de Octubre</h2>
-            <div class="w-12 h-px bg-blue-300 mx-auto mt-6"></div>
-        </section>
-
-        <section class="py-20 px-6 text-center bg-white relative">
-            <h2 class="font-name text-3xl text-blue-900 mb-2">Recepción</h2>
-            <p class="text-blue-500 italic mb-2">Salón Villagrand (salón 1)</p>
-            <p class="text-gray-400 text-[10px] mb-10 uppercase tracking-[0.3em]">Querétaro</p>
-            <div class="max-w-4xl mx-auto h-72 bg-blue-50 rounded-3xl overflow-hidden border border-blue-100 mb-10">
-                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3734.463321683416!2d-100.4447477!3d20.610129!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x85d35a6064f77771%3A0x6b49e0c5921867!2sSal%C3%B3n%20Villagrand!5e0!3m2!1ses!2smx!4v1700000000000" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+            <p class="text-blue-500 italic mt-4">Salón Villagrand (salón 1)</p>
+            <p class="text-gray-400 text-[10px] mt-2 uppercase tracking-[0.3em]">Querétaro</p>
+            <div class="max-w-4xl mx-auto h-72 bg-blue-50 rounded-3xl overflow-hidden border border-blue-100 my-10 px-4 md:px-0">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3734.123!2d-100.39!3d20.59!" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
             </div>
-            <a href="https://maps.app.goo.gl/YourMapLink" target="_blank" class="px-8 py-3 bg-blue-600 text-white rounded-full text-[10px] tracking-widest font-bold shadow-lg">VER EN MAPA</a>
+            <a href="https://maps.app.goo.gl/..." target="_blank" class="px-8 py-3 bg-blue-600 text-white rounded-full text-[10px] tracking-widest font-bold shadow-lg">VER EN MAPA</a>
         </section>
 
         <section class="py-20 px-6 text-center bg-white">
             <h2 class="font-name text-3xl text-blue-900 mb-12">Itinerario</h2>
-            <div class="max-w-md mx-auto space-y-8 text-left border-l-2 border-blue-100 pl-8 ml-8 md:ml-auto md:mr-auto">
+            <div class="max-w-md mx-auto space-y-8 text-left border-l-2 border-blue-100 pl-8">
                 <div class="relative"><div class="absolute -left-[41px] top-1 w-4 h-4 rounded-full bg-blue-300"></div><p class="font-name text-blue-900 text-lg">5:15 Recepción</p></div>
                 <div class="relative"><div class="absolute -left-[41px] top-1 w-4 h-4 rounded-full bg-blue-400"></div><p class="font-name text-blue-900 text-lg">5:30 Ceremonia</p></div>
+                <div class="relative"><div class="absolute -left-[41px] top-1 w-4 h-4 rounded-full bg-blue-300"></div><p class="font-name text-blue-900 text-lg">6:15 Coctail de bienvenida</p></div>
+                <div class="relative"><div class="absolute -left-[41px] top-1 w-4 h-4 rounded-full bg-blue-400"></div><p class="font-name text-blue-900 text-lg">6:30 Baile familiar y chambelanes</p></div>
                 <div class="relative"><div class="absolute -left-[41px] top-1 w-4 h-4 rounded-full bg-blue-300"></div><p class="font-name text-blue-900 text-lg">7:00 Cena</p></div>
-                <div class="relative"><div class="absolute -left-[41px] top-1 w-4 h-4 rounded-full bg-blue-400"></div><p class="font-name text-blue-900 text-lg">11:00 Fin del evento</p></div>
+                <div class="relative"><div class="absolute -left-[41px] top-1 w-4 h-4 rounded-full bg-blue-400"></div><p class="font-name text-blue-900 text-lg">9:00 Baile sorpresa</p></div>
+                <div class="relative"><div class="absolute -left-[41px] top-1 w-4 h-4 rounded-full bg-blue-300"></div><p class="font-name text-blue-900 text-lg">11:00 Fin del evento</p></div>
             </div>
         </section>
 
@@ -147,7 +140,7 @@
         </section>
 
         <section class="py-24 px-6 bg-[var(--azul-claro)]" id="confirmacion">
-            <div class="max-w-md mx-auto bg-white p-10 rounded-[3rem] shadow-xl text-center">
+            <div class="max-w-md mx-auto bg-white p-10 rounded-[3rem] shadow-xl text-center border border-blue-50">
                 <h2 class="font-name text-2xl mb-6 text-blue-900 uppercase tracking-widest">Confirmar</h2>
                 <input type="text" id="rsvp-nombre" placeholder="Nombre completo" class="w-full p-4 mb-4 rounded-2xl bg-blue-50 border border-blue-100 outline-none">
                 <select id="rsvp-asistencia" class="w-full p-4 mb-6 rounded-2xl bg-blue-50 border border-blue-100 outline-none">
@@ -167,7 +160,7 @@
             </div>
         </section>
 
-        <footer class="py-12 text-center text-[9px] tracking-[0.5em] text-gray-300 bg-white">INVYTIA PLATINUM EXPERIENCE</footer>
+        <footer class="py-12 text-center text-[9px] tracking-[0.5em] text-gray-300">INVYTIA PLATINUM EXPERIENCE</footer>
     </main>
 
     <script>
@@ -181,7 +174,8 @@
             audio.play().catch(e => console.log("Audio play deferred"));
             document.getElementById('music-control').style.display = 'flex';
             
-            for (let i = 0; i < 15; i++) { crearMariposaExplosion(); }
+            // EXPLOSIÓN DE MARIPOSAS (Más cantidad para impacto visual)
+            for (let i = 0; i < 18; i++) { crearMariposaExplosion(); }
 
             setTimeout(() => {
                 document.getElementById('opening-overlay').style.opacity = '0';
@@ -192,34 +186,39 @@
                     document.body.style.overflowY = 'auto';
                     startCountdown();
                 }, 1000);
-            }, 2200);
+            }, 2500);
         }
 
         async function procesarConfirmacion() {
             const nombre = document.getElementById('rsvp-nombre').value;
             const asistencia = document.getElementById('rsvp-asistencia').value;
             const btn = document.getElementById('btn-rsvp');
-            if(!nombre) return alert("Escribe tu nombre");
+            if(!nombre) return alert("Por favor escribe tu nombre");
 
             btn.innerText = "REGISTRANDO...";
             try {
+                // Envío a Google Sheets
                 await fetch(URL_SCRIPT, { method: 'POST', mode: 'no-cors', body: JSON.stringify({ tipo: 'confirmacion', nombre, asistencia }) });
+                // Notificación WhatsApp
                 const msg = `¡Hola Michelle! Confirmo mi asistencia: ${nombre}. Estado: ${asistencia}`;
                 window.open(`https://wa.me/525539994414?text=${encodeURIComponent(msg)}`, '_blank');
                 btn.innerText = "¡LISTO!";
-            } catch (e) { alert("Error"); btn.innerText = "REINTENTAR"; }
+            } catch (e) { alert("Error al registrar"); btn.innerText = "REINTENTAR"; }
         }
 
         async function enviarDeseo() {
             const mensaje = document.getElementById('muro-mensaje').value;
             const nombre = document.getElementById('muro-nombre').value;
-            if(!mensaje || !nombre) return alert("Llena ambos campos");
+            const btn = document.getElementById('btn-muro');
+            if(!mensaje || !nombre) return alert("Por favor llena ambos campos");
+            btn.innerText = "PUBLICANDO...";
             try {
                 await fetch(URL_SCRIPT, { method: 'POST', mode: 'no-cors', body: JSON.stringify({ tipo: 'deseo', mensaje, nombre }) });
-                alert("¡Mensaje enviado!");
+                alert("¡Gracias por tus palabras!");
                 document.getElementById('muro-mensaje').value = "";
                 document.getElementById('muro-nombre').value = "";
-            } catch (e) { alert("Error"); }
+                btn.innerText = "PUBLICAR";
+            } catch (e) { alert("Error"); btn.innerText = "PUBLICAR"; }
         }
 
         function startCountdown() {
@@ -227,10 +226,12 @@
             setInterval(() => {
                 const now = new Date().getTime();
                 const dist = target - now;
-                document.getElementById("days").innerText = Math.floor(dist / (1000 * 60 * 60 * 24));
-                document.getElementById("hours").innerText = Math.floor((dist % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-                document.getElementById("minutes").innerText = Math.floor((dist % (1000 * 60 * 60)) / (1000 * 60));
-                document.getElementById("seconds").innerText = Math.floor((dist % (1000 * 60)) / 1000);
+                if (dist > 0) {
+                    document.getElementById("days").innerText = Math.floor(dist / (1000 * 60 * 60 * 24));
+                    document.getElementById("hours").innerText = Math.floor((dist % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                    document.getElementById("minutes").innerText = Math.floor((dist % (1000 * 60 * 60)) / (1000 * 60));
+                    document.getElementById("seconds").innerText = Math.floor((dist % (1000 * 60)) / 1000);
+                }
             }, 1000);
         }
 
@@ -243,15 +244,23 @@
             const img = document.createElement('img');
             img.src = 'assets/mariposa.png';
             img.className = 'butterfly-img';
-            img.style.position = 'fixed'; img.style.left = '50%'; img.style.top = '50%';
-            img.style.width = (Math.random() * 20 + 30) + 'px';
+            img.style.position = 'fixed'; 
+            img.style.left = '50%'; 
+            img.style.top = '50%';
+            img.style.zIndex = '120';
+            img.style.width = (Math.random() * 20 + 35) + 'px';
             document.body.appendChild(img);
+            
+            const destX = (Math.random() - 0.5) * window.innerWidth * 1.8;
+            const destY = -(Math.random() * window.innerHeight + 300);
+
             img.animate([
-                { transform: 'translate(-50%, -50%) scale(0)', opacity: 0 },
-                { opacity: 1, offset: 0.2 },
-                { transform: `translate(${(Math.random()-0.5)*window.innerWidth}px, ${-(Math.random()*window.innerHeight)}px) rotate(${Math.random()*360}deg)`, opacity: 0 }
-            ], { duration: 3000, easing: 'ease-out', fill: 'forwards' });
-            setTimeout(() => img.remove(), 3500);
+                { transform: 'translate(-50%, -50%) scale(0) rotate(0deg)', opacity: 0 },
+                { opacity: 1, offset: 0.1 },
+                { transform: `translate(${destX}px, ${destY}px) scale(1.2) rotate(${Math.random()*720}deg)`, opacity: 0 }
+            ], { duration: 2800, easing: 'ease-out', fill: 'forwards' });
+            
+            setTimeout(() => img.remove(), 3000);
         }
     </script>
 </body>
