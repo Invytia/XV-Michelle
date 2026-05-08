@@ -9,7 +9,7 @@
     
     <style>
         :root {
-            --azul-pantone: #D1E9F6; /* Pantone Baby Blue 545-G Approximate */
+            --azul-pantone: #D1E9F6;
             --azul-claro: #F0F7FF;
             --azul-premium: #90CDF4;
             --azul-texto: #1A365D;
@@ -18,7 +18,7 @@
         .font-name { font-family: 'Playfair Display', serif; text-transform: none !important; }
         .font-cursive { font-family: 'Great Vibes', cursive; }
         
-        /* --- SOBRE (NO TOCAR ESTRUCTURA) --- */
+        /* --- SOBRE --- */
         #envelope-wrapper { perspective: 1000px; position: relative; z-index: 60; }
         #envelope {
             width: 300px; height: 200px; background: white; position: relative;
@@ -42,27 +42,15 @@
             border: 1px solid var(--azul-pantone);
         }
 
-        /* --- MARIPOSAS DE IMAGEN (ULTRA PREMIUM) --- */
+        /* --- MARIPOSAS --- */
         .butterfly-img {
-            position: absolute;
-            pointer-events: none;
-            z-index: 20;
-            width: 45px;
+            position: absolute; pointer-events: none; z-index: 20; width: 45px;
             filter: drop-shadow(0 5px 10px rgba(0,0,0,0.1));
             animation: aleteo 0.5s ease-in-out infinite alternate;
         }
+        @keyframes aleteo { from { transform: scaleX(1) rotate(0deg); } to { transform: scaleX(0.7) rotate(5deg); } }
 
-        @keyframes aleteo {
-            from { transform: scaleX(1) rotate(0deg); }
-            to { transform: scaleX(0.7) rotate(5deg); }
-        }
-
-        /* Mariposas flotando en el fondo */
-        .floating-bg {
-            animation: moveSlow 20s linear infinite;
-            opacity: 0.7;
-        }
-
+        .floating-bg { animation: moveSlow 20s linear infinite; opacity: 0.7; }
         @keyframes moveSlow {
             0% { transform: translate(0, 0) rotate(0deg); }
             33% { transform: translate(50vw, -20vh) rotate(20deg); }
@@ -70,7 +58,6 @@
             100% { transform: translate(0, 0) rotate(0deg); }
         }
 
-        /* --- TRANSICIÓN --- */
         #main-content { opacity: 0; transition: opacity 1.5s ease; }
         .show-content { opacity: 1 !important; }
     </style>
@@ -87,7 +74,7 @@
 
     <div id="opening-overlay" class="fixed inset-0 z-[100] bg-[#E1EFFE] flex flex-col items-center justify-center transition-opacity duration-1000">
         <div id="envelope-wrapper">
-            <div id="envelope" class="flex flex-col items-center justify-end pb-3">
+            <div id="envelope" class="flex flex-col items-center justify-center pt-20 pb-4">
                 <div id="flap"></div>
                 <div class="text-center z-10 px-4">
                     <p class="font-cursive text-2xl text-blue-400">Mis XV Años</p>
@@ -101,11 +88,9 @@
     </div>
 
     <main id="main-content" class="hidden relative">
-        
         <img src="assets/mariposa.png" class="butterfly-img floating-bg" style="top: 10%; left: 5%; width: 60px;">
         <img src="assets/mariposa.png" class="butterfly-img floating-bg" style="top: 40%; right: 10%; width: 50px; animation-delay: -5s;">
-        <img src="assets/mariposa.png" class="butterfly-img floating-bg" style="top: 75%; left: 15%; width: 70px; animation-delay: -10s;">
-
+        
         <section class="relative h-[95vh] w-full flex items-end justify-center pb-20 -mt-[15px]">
             <img src="assets/hero.jpg" alt="Michelle" class="absolute inset-0 w-full h-full object-cover">
             <div class="absolute inset-0 bg-gradient-to-t from-[var(--azul-claro)] via-transparent"></div>
@@ -142,102 +127,73 @@
 
         <section class="py-20 text-center relative bg-[var(--azul-claro)]">
             <h2 class="font-name text-4xl text-blue-900">24 de Octubre</h2>
-            <div class="w-12 h-px bg-blue-300 mx-auto mt-6"></div>
         </section>
 
         <section class="py-20 px-6 text-center bg-white relative">
-            <img src="assets/mariposa.png" class="butterfly-img" style="bottom: 10px; left: 5%; width: 55px; opacity: 0.6;">
             <h2 class="font-name text-3xl text-blue-900 mb-2">Recepción</h2>
             <p class="text-blue-500 italic mb-2">Salón Villagrand (salón 1)</p>
             <p class="text-gray-400 text-[10px] mb-10 uppercase tracking-[0.3em]">Querétaro</p>
-            
             <div class="max-w-4xl mx-auto h-72 bg-blue-50 rounded-3xl overflow-hidden shadow-inner border border-blue-100 mb-10">
-                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3734.960249718469!2d-100.4137265!3d20.5896593!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x85d35b2e88a0026f%3A0xc3ec5700589d6e40!2sSal%C3%B3n%20Villagrand!5e0!3m2!1ses-419!2smx!4v1715115161000!5m2!1ses-419!2smx" width="100%" height="100%" style="border:0; opacity: 0.7;" allowfullscreen="" loading="lazy"></iframe>
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3734.567!2d-100.389!3d20.592!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjDCsDM1JzMxLjIiTiAxMDDCsDIzJzIwLjQiVw!5e0!3m2!1ses!2smx!4v1700000000000" width="100%" height="100%" style="border:0; opacity: 0.7;" allowfullscreen="" loading="lazy"></iframe>
             </div>
-
-            <a href="https://maps.app.goo.gl/3ip1DXR6ero2zRYK7?g_st=ic" target="_blank" class="px-8 py-3 bg-blue-600 text-white rounded-full text-[10px] tracking-widest font-bold shadow-lg relative z-10">VER EN MAPA</a>
-        </section>
-
-        <section class="py-20 px-8 text-center bg-blue-50/30">
-            <h2 class="font-name text-2xl text-blue-900 mb-6">Sugerencia de Regalos</h2>
-            <p class="text-blue-500 font-light italic max-w-md mx-auto leading-relaxed">
-                "Para nosotros, tu presencia es el mejor regalo. Si deseas regalarme algo, consideramos la dinámica de lluvia de sobres"
-            </p>
+            <a href="https://maps.app.goo.gl/YourMapLink" target="_blank" class="px-8 py-3 bg-blue-600 text-white rounded-full text-[10px] tracking-widest font-bold shadow-lg">VER EN MAPA</a>
         </section>
 
         <section class="py-20 px-6 text-center bg-white">
             <h2 class="font-name text-3xl text-blue-900 mb-12">Itinerario</h2>
             <div class="max-w-md mx-auto space-y-8 text-left border-l-2 border-blue-100 pl-8 ml-8 md:ml-auto md:mr-auto">
-                <div class="relative"><div class="absolute -left-[41px] top-1 w-4 h-4 rounded-full bg-blue-300"></div><p class="font-name text-blue-900 text-lg">5:15 Recepción</p></div>
-                <div class="relative"><div class="absolute -left-[41px] top-1 w-4 h-4 rounded-full bg-blue-400"></div><p class="font-name text-blue-900 text-lg">5:30 Ceremonia</p></div>
-                <div class="relative"><div class="absolute -left-[41px] top-1 w-4 h-4 rounded-full bg-blue-300"></div><p class="font-name text-blue-900 text-lg">6:15 Coctail de bienvenida</p></div>
-                <div class="relative"><div class="absolute -left-[41px] top-1 w-4 h-4 rounded-full bg-blue-400"></div><p class="font-name text-blue-900 text-lg">6:30 Baile familiar y chambelanes</p></div>
-                <div class="relative"><div class="absolute -left-[41px] top-1 w-4 h-4 rounded-full bg-blue-300"></div><p class="font-name text-blue-900 text-lg">7:00 Cena</p></div>
-                <div class="relative"><div class="absolute -left-[41px] top-1 w-4 h-4 rounded-full bg-blue-400"></div><p class="font-name text-blue-900 text-lg">9:00 Baile sorpresa</p></div>
-                <div class="relative"><div class="absolute -left-[41px] top-1 w-4 h-4 rounded-full bg-blue-300"></div><p class="font-name text-blue-900 text-lg">11:00 Fin del evento</p></div>
+                <div><p class="font-name text-blue-900 text-lg">5:15 Recepción</p></div>
+                <div><p class="font-name text-blue-900 text-lg">5:30 Ceremonia</p></div>
+                <div><p class="font-name text-blue-900 text-lg">6:15 Coctail de bienvenida</p></div>
+                <div><p class="font-name text-blue-900 text-lg">6:30 Baile familiar y chambelanes</p></div>
+                <div><p class="font-name text-blue-900 text-lg">7:00 Cena</p></div>
+                <div><p class="font-name text-blue-900 text-lg">9:00 Baile sorpresa</p></div>
+                <div><p class="font-name text-blue-900 text-lg">11:00 Fin del evento</p></div>
             </div>
         </section>
 
-        <section class="w-full h-screen bg-white py-8 px-4 relative">
-            <img src="assets/mich1.jpg" alt="Michelle XV" class="w-full h-full object-cover rounded-3xl shadow-2xl relative z-10">
-        </section>
-
         <section class="py-24 px-6 bg-[var(--azul-claro)] relative" id="confirmacion">
-            <img src="assets/mariposa.png" class="butterfly-img" style="top: 10%; right: 5%; width: 50px; opacity: 0.8; z-index: 0;">
-            <div class="max-w-md mx-auto bg-white p-12 rounded-[3rem] shadow-xl border border-blue-50 text-center relative z-10">
-                <h2 class="font-name text-2xl mb-8 text-blue-900 uppercase tracking-widest">Confirmar</h2>
-                <a href="https://wa.me/525539994414" target="_blank" class="block w-full py-4 bg-blue-900 text-white rounded-2xl font-bold tracking-[0.2em] text-[10px] shadow-lg">ENVIAR WHATSAPP</a>
+            <div class="max-w-md mx-auto bg-white p-8 md:p-12 rounded-[3rem] shadow-xl border border-blue-50 text-center relative z-10">
+                <h2 class="font-name text-2xl mb-6 text-blue-900 uppercase tracking-widest">Confirmar</h2>
+                <div class="space-y-4">
+                    <input type="text" id="rsvp-nombre" placeholder="Nombre completo" class="w-full p-4 rounded-2xl bg-blue-50/50 border border-blue-100 outline-none focus:border-blue-300">
+                    <select id="rsvp-asistencia" class="w-full p-4 rounded-2xl bg-blue-50/50 border border-blue-100 outline-none focus:border-blue-300">
+                        <option value="Confirmado">Sí, asistiré</option>
+                        <option value="No asistirá">No podré asistir</option>
+                    </select>
+                    <button onclick="enviarConfirmacion()" id="btn-rsvp" class="block w-full py-4 bg-blue-900 text-white rounded-2xl font-bold tracking-[0.2em] text-[10px] shadow-lg">ENVIAR CONFIRMACIÓN</button>
+                </div>
             </div>
         </section>
 
         <section class="py-24 px-6 text-center bg-white relative">
             <h2 class="font-name text-2xl text-blue-900 mb-10">Muro de Deseos</h2>
-            <div class="max-w-2xl mx-auto space-y-6 relative z-10">
-                <textarea placeholder="Deja tu mensaje aquí..." class="w-full h-40 p-8 rounded-3xl bg-blue-50/50 border border-blue-100 outline-none focus:border-blue-300 italic text-gray-600 resize-none"></textarea>
-                <button class="px-12 py-3 border-2 border-blue-200 text-blue-400 rounded-full font-bold text-[10px] tracking-widest">PUBLICAR</button>
+            <div class="max-w-2xl mx-auto space-y-4 relative z-10">
+                <textarea id="muro-mensaje" placeholder="Deja tus buenos deseos..." class="w-full h-40 p-8 rounded-3xl bg-blue-50/50 border border-blue-100 outline-none focus:border-blue-300 italic text-gray-600 resize-none"></textarea>
+                <input type="text" id="muro-nombre" placeholder="Tu nombre" class="w-full p-4 rounded-2xl bg-blue-50/50 border border-blue-100 outline-none focus:border-blue-300">
+                <button onclick="enviarDeseo()" id="btn-muro" class="px-12 py-3 border-2 border-blue-200 text-blue-400 rounded-full font-bold text-[10px] tracking-widest">PUBLICAR</button>
             </div>
         </section>
 
-        <section class="py-24 px-8 text-center bg-blue-50/30 relative">
-            <img src="assets/mariposa.png" class="butterfly-img" style="bottom: -10px; left: 10%; width: 40px; transform: rotate(-15deg); opacity: 0.5;">
-            <h2 class="font-name text-2xl text-blue-900 mb-6 relative z-10">Código de Vestimenta</h2>
-            <p class="uppercase tracking-widest text-sm text-blue-800 font-bold mb-4 relative z-10">Formal</p>
-            <p class="text-blue-400 font-light italic max-w-sm mx-auto relative z-10">Se reserva el color azul pastel para la quinceañera.</p>
-        </section>
-
         <footer class="py-12 text-center text-[9px] tracking-[0.5em] text-gray-300 bg-white">INVYTIA PLATINUM EXPERIENCE</footer>
-
     </main>
 
     <script>
         const audio = document.getElementById('invite-music');
         const musicText = document.getElementById('music-text');
-        const countdownDate = new Date("Oct 24, 2026 17:15:00").getTime();
+        const WEB_APP_URL = 'https://script.google.com/macros/s/AKfycbz1QlM9Ccy08OOlvHKtNVApC6i62uatapKWDkSFVt_sRRrDFPsx7KohDrLYfXbvLVUK0Q/exec';
 
         function iniciarApertura() {
             const overlay = document.getElementById('opening-overlay');
             const wrapper = document.getElementById('envelope-wrapper');
             const main = document.getElementById('main-content');
-            const btn = document.getElementById('btn-abrir');
-            const musicBtn = document.getElementById('music-control');
-
-            // Prevenir doble click
-            btn.style.pointerEvents = 'none';
-
-            // 1. Abrir flap
             wrapper.classList.add('open');
-            btn.style.display = 'none';
+            document.getElementById('btn-abrir').style.display = 'none';
+            audio.play().catch(e => console.log("Audio deferred"));
+            document.getElementById('music-control').style.display = 'flex';
+            
+            for (let i = 0; i < 12; i++) { crearMariposaExplosion(); }
 
-            // 2. Iniciar música
-            audio.play().catch(e => console.log("Audio play deferred"));
-            musicBtn.style.display = 'flex';
-
-            // 3. Crear y animar mariposas saliendo del sobre
-            for (let i = 0; i < 12; i++) {
-                crearMariposaExplosion();
-            }
-
-            // 4. Transición al contenido principal
             setTimeout(() => {
                 overlay.style.opacity = '0';
                 main.classList.remove('hidden');
@@ -245,67 +201,63 @@
                     overlay.style.display = 'none';
                     main.classList.add('show-content');
                     document.body.style.overflowY = 'auto';
-                    startCountdown();
                 }, 1000);
-            }, 2500); // Damos tiempo a que las mariposas terminen de volar
+            }, 2500);
+        }
+
+        async function enviarConfirmacion() {
+            const nombre = document.getElementById('rsvp-nombre').value;
+            const asistencia = document.getElementById('rsvp-asistencia').value;
+            const btn = document.getElementById('btn-rsvp');
+            if (!nombre) return alert("Escribe tu nombre");
+            btn.innerText = "ENVIANDO...";
+            btn.disabled = true;
+            try {
+                await fetch(WEB_APP_URL, { method: 'POST', mode: 'no-cors', body: JSON.stringify({ tipo: 'confirmacion', nombre, asistencia }) });
+                alert("¡Registro exitoso!");
+                btn.innerText = "ENVIADO";
+            } catch (e) { alert("Error al enviar"); btn.disabled = false; }
+        }
+
+        async function enviarDeseo() {
+            const mensaje = document.getElementById('muro-mensaje').value;
+            const nombre = document.getElementById('muro-nombre').value;
+            const btn = document.getElementById('btn-muro');
+            if (!mensaje || !nombre) return alert("Completa los campos");
+            btn.innerText = "PUBLICANDO...";
+            btn.disabled = true;
+            try {
+                await fetch(WEB_APP_URL, { method: 'POST', mode: 'no-cors', body: JSON.stringify({ tipo: 'deseo', mensaje, nombre }) });
+                alert("¡Mensaje publicado!");
+                document.getElementById('muro-mensaje').value = "";
+                document.getElementById('muro-nombre').value = "";
+                btn.innerText = "PUBLICAR OTRO";
+                btn.disabled = false;
+            } catch (e) { alert("Error"); btn.disabled = false; }
         }
 
         function toggleMusic() {
-            if (audio.paused) {
-                audio.play();
-                musicText.innerText = "PAUSAR";
-            } else {
-                audio.pause();
-                musicText.innerText = "REANUDAR";
-            }
+            if (audio.paused) { audio.play(); musicText.innerText = "PAUSAR"; }
+            else { audio.pause(); musicText.innerText = "REANUDAR"; }
         }
 
-        function startCountdown() {
-            setInterval(function() {
-                const now = new Date().getTime();
-                const distance = countdownDate - now;
-                document.getElementById("days").innerText = Math.floor(distance / (1000 * 60 * 60 * 24));
-                document.getElementById("hours").innerText = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-                document.getElementById("minutes").innerText = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-                document.getElementById("seconds").innerText = Math.floor((distance % (1000 * 60)) / 1000);
-            }, 1000);
-        }
-
-        // Función nativa para explosión de mariposas PNG
         function crearMariposaExplosion() {
             const img = document.createElement('img');
             img.src = 'assets/mariposa.png';
             img.className = 'butterfly-img';
             img.style.position = 'fixed';
-            img.style.zIndex = '120';
-            img.style.width = (Math.random() * 20 + 30) + 'px'; // Tamaños variados entre 30 y 50px
+            img.style.left = '50%';
+            img.style.top = '50%';
+            img.style.width = (Math.random() * 20 + 30) + 'px';
             document.body.appendChild(img);
-
-            const startX = window.innerWidth / 2;
-            const startY = window.innerHeight / 2;
-            
-            // Valores de vuelo aleatorios
-            const destX = (Math.random() - 0.5) * window.innerWidth * 1.8;
-            const destY = -(Math.random() * window.innerHeight + 300);
-            const rot = (Math.random() - 0.5) * 720;
-
-            // Posición inicial (centro del sobre)
-            img.style.left = startX + 'px';
-            img.style.top = startY + 'px';
-
-            // Animación nativa (Web Animations API)
+            const destX = (Math.random() - 0.5) * window.innerWidth * 1.5;
+            const destY = -(Math.random() * window.innerHeight + 200);
             img.animate([
-                { transform: 'translate(0,0) scale(0) rotate(0deg)', opacity: 0 },
-                { opacity: 1, offset: 0.1 }, // Aparecer rápido
-                { transform: `translate(${destX}px, ${destY}px) scale(1.2) rotate(${rot}deg)`, opacity: 0 } // Vuelo y desaparecer
-            ], {
-                duration: 2500 + Math.random() * 1000,
-                easing: 'ease-out',
-                fill: 'forwards'
-            });
-
-            // Limpieza del DOM
-            setTimeout(() => img.remove(), 4000);
+                { transform: 'translate(-50%, -50%) scale(0)', opacity: 0 },
+                { opacity: 1, offset: 0.2 },
+                { transform: `translate(${destX}px, ${destY}px) scale(1) rotate(${Math.random()*360}deg)`, opacity: 0 }
+            ], { duration: 3000, easing: 'ease-out', fill: 'forwards' });
+            setTimeout(() => img.remove(), 3500);
         }
     </script>
 </body>
