@@ -11,7 +11,6 @@
         :root {
             --azul-pantone: #D1E9F6;
             --azul-claro: #F0F7FF;
-            --azul-premium: #90CDF4;
             --azul-texto: #1A365D;
         }
         body { font-family: 'Montserrat', sans-serif; background-color: var(--azul-claro); color: var(--azul-texto); margin: 0; overflow-x: hidden; }
@@ -32,13 +31,13 @@
         }
         .open #flap { transform: rotateX(180deg); }
 
-        /* --- STICKY AUDIO BUTTON --- */
+        /* --- STICKY AUDIO --- */
         #music-control {
             position: fixed; bottom: 25px; right: 25px; z-index: 200;
             padding: 12px 24px; background: white; border-radius: 50px;
             display: flex; align-items: center; justify-content: center;
             box-shadow: 0 10px 25px rgba(0,0,0,0.1); cursor: pointer; display: none;
-            font-size: 10px; font-weight: 800; letter-spacing: 2px; color: #1A365D;
+            font-size: 10px; font-weight: 800; letter-spacing: 2px;
             border: 1px solid var(--azul-pantone);
         }
 
@@ -49,12 +48,10 @@
             animation: aleteo 0.5s ease-in-out infinite alternate;
         }
         @keyframes aleteo { from { transform: scaleX(1) rotate(0deg); } to { transform: scaleX(0.7) rotate(5deg); } }
-
-        .floating-bg { animation: moveSlow 20s linear infinite; opacity: 0.7; }
+        .floating-bg { animation: moveSlow 20s linear infinite; opacity: 0.6; }
         @keyframes moveSlow {
             0% { transform: translate(0, 0) rotate(0deg); }
-            33% { transform: translate(50vw, -20vh) rotate(20deg); }
-            66% { transform: translate(-20vw, -40vh) rotate(-10deg); }
+            33% { transform: translate(30vw, -10vh) rotate(15deg); }
             100% { transform: translate(0, 0) rotate(0deg); }
         }
 
@@ -64,17 +61,13 @@
 </head>
 <body class="overflow-hidden">
 
-    <audio id="invite-music" loop>
-        <source src="assets/song.mp3" type="audio/mpeg">
-    </audio>
+    <audio id="invite-music" loop><source src="assets/song.mp3" type="audio/mpeg"></audio>
 
-    <div id="music-control" onclick="toggleMusic()">
-        <span id="music-text">PAUSAR</span>
-    </div>
+    <div id="music-control" onclick="toggleMusic()"><span id="music-text">PAUSAR</span></div>
 
     <div id="opening-overlay" class="fixed inset-0 z-[100] bg-[#E1EFFE] flex flex-col items-center justify-center transition-opacity duration-1000">
         <div id="envelope-wrapper">
-            <div id="envelope" class="flex flex-col items-center justify-center pt-20 pb-4">
+            <div id="envelope" class="flex flex-col items-center justify-end pb-6">
                 <div id="flap"></div>
                 <div class="text-center z-10 px-4">
                     <p class="font-cursive text-2xl text-blue-400">Mis XV Años</p>
@@ -82,15 +75,15 @@
                 </div>
             </div>
         </div>
-        <button onclick="iniciarApertura()" id="btn-abrir" class="mt-12 px-10 py-3 bg-white text-blue-500 rounded-full shadow-lg font-bold tracking-[0.2em] text-xs hover:scale-105 transition-transform">
+        <button onclick="iniciarApertura()" id="btn-abrir" class="mt-12 px-10 py-3 bg-white text-blue-500 rounded-full shadow-lg font-bold tracking-[0.2em] text-xs">
             ABRIR INVITACIÓN
         </button>
     </div>
 
     <main id="main-content" class="hidden relative">
-        <img src="assets/mariposa.png" class="butterfly-img floating-bg" style="top: 10%; left: 5%; width: 60px;">
-        <img src="assets/mariposa.png" class="butterfly-img floating-bg" style="top: 40%; right: 10%; width: 50px; animation-delay: -5s;">
-        
+        <img src="assets/mariposa.png" class="butterfly-img floating-bg" style="top:15%; left:5%;">
+        <img src="assets/mariposa.png" class="butterfly-img floating-bg" style="top:60%; right:5%; animation-delay:-5s;">
+
         <section class="relative h-[95vh] w-full flex items-end justify-center pb-20 -mt-[15px]">
             <img src="assets/hero.jpg" alt="Michelle" class="absolute inset-0 w-full h-full object-cover">
             <div class="absolute inset-0 bg-gradient-to-t from-[var(--azul-claro)] via-transparent"></div>
@@ -109,9 +102,8 @@
             </div>
         </section>
 
-        <section class="pb-20 px-8 text-center bg-white relative">
-            <img src="assets/mariposa.png" class="butterfly-img" style="top: -10px; right: 5%; width: 40px; transform: rotate(15deg);">
-            <p class="font-cursive text-3xl text-blue-500 max-w-lg mx-auto leading-relaxed relative z-10">
+        <section class="pb-20 px-8 text-center bg-white">
+            <p class="font-cursive text-3xl text-blue-500 max-w-lg mx-auto leading-relaxed">
                 "Hay momentos inolvidables que se atesoran en el corazón para siempre. Gracias por ser parte de mi historia."
             </p>
         </section>
@@ -127,14 +119,15 @@
 
         <section class="py-20 text-center relative bg-[var(--azul-claro)]">
             <h2 class="font-name text-4xl text-blue-900">24 de Octubre</h2>
+            <div class="w-12 h-px bg-blue-300 mx-auto mt-6"></div>
         </section>
 
         <section class="py-20 px-6 text-center bg-white relative">
             <h2 class="font-name text-3xl text-blue-900 mb-2">Recepción</h2>
             <p class="text-blue-500 italic mb-2">Salón Villagrand (salón 1)</p>
             <p class="text-gray-400 text-[10px] mb-10 uppercase tracking-[0.3em]">Querétaro</p>
-            <div class="max-w-4xl mx-auto h-72 bg-blue-50 rounded-3xl overflow-hidden shadow-inner border border-blue-100 mb-10">
-                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3734.567!2d-100.389!3d20.592!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjDCsDM1JzMxLjIiTiAxMDDCsDIzJzIwLjQiVw!5e0!3m2!1ses!2smx!4v1700000000000" width="100%" height="100%" style="border:0; opacity: 0.7;" allowfullscreen="" loading="lazy"></iframe>
+            <div class="max-w-4xl mx-auto h-72 bg-blue-50 rounded-3xl overflow-hidden border border-blue-100 mb-10">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3734.463321683416!2d-100.4447477!3d20.610129!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x85d35a6064f77771%3A0x6b49e0c5921867!2sSal%C3%B3n%20Villagrand!5e0!3m2!1ses!2smx!4v1700000000000" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
             </div>
             <a href="https://maps.app.goo.gl/YourMapLink" target="_blank" class="px-8 py-3 bg-blue-600 text-white rounded-full text-[10px] tracking-widest font-bold shadow-lg">VER EN MAPA</a>
         </section>
@@ -142,35 +135,34 @@
         <section class="py-20 px-6 text-center bg-white">
             <h2 class="font-name text-3xl text-blue-900 mb-12">Itinerario</h2>
             <div class="max-w-md mx-auto space-y-8 text-left border-l-2 border-blue-100 pl-8 ml-8 md:ml-auto md:mr-auto">
-                <div><p class="font-name text-blue-900 text-lg">5:15 Recepción</p></div>
-                <div><p class="font-name text-blue-900 text-lg">5:30 Ceremonia</p></div>
-                <div><p class="font-name text-blue-900 text-lg">6:15 Coctail de bienvenida</p></div>
-                <div><p class="font-name text-blue-900 text-lg">6:30 Baile familiar y chambelanes</p></div>
-                <div><p class="font-name text-blue-900 text-lg">7:00 Cena</p></div>
-                <div><p class="font-name text-blue-900 text-lg">9:00 Baile sorpresa</p></div>
-                <div><p class="font-name text-blue-900 text-lg">11:00 Fin del evento</p></div>
+                <div class="relative"><div class="absolute -left-[41px] top-1 w-4 h-4 rounded-full bg-blue-300"></div><p class="font-name text-blue-900 text-lg">5:15 Recepción</p></div>
+                <div class="relative"><div class="absolute -left-[41px] top-1 w-4 h-4 rounded-full bg-blue-400"></div><p class="font-name text-blue-900 text-lg">5:30 Ceremonia</p></div>
+                <div class="relative"><div class="absolute -left-[41px] top-1 w-4 h-4 rounded-full bg-blue-300"></div><p class="font-name text-blue-900 text-lg">7:00 Cena</p></div>
+                <div class="relative"><div class="absolute -left-[41px] top-1 w-4 h-4 rounded-full bg-blue-400"></div><p class="font-name text-blue-900 text-lg">11:00 Fin del evento</p></div>
             </div>
         </section>
 
-        <section class="py-24 px-6 bg-[var(--azul-claro)] relative" id="confirmacion">
-            <div class="max-w-md mx-auto bg-white p-8 md:p-12 rounded-[3rem] shadow-xl border border-blue-50 text-center relative z-10">
+        <section class="w-full h-screen bg-white py-10 px-4">
+            <img src="assets/mich1.jpg" alt="Michelle" class="w-full h-full object-cover rounded-3xl shadow-2xl">
+        </section>
+
+        <section class="py-24 px-6 bg-[var(--azul-claro)]" id="confirmacion">
+            <div class="max-w-md mx-auto bg-white p-10 rounded-[3rem] shadow-xl text-center">
                 <h2 class="font-name text-2xl mb-6 text-blue-900 uppercase tracking-widest">Confirmar</h2>
-                <div class="space-y-4">
-                    <input type="text" id="rsvp-nombre" placeholder="Nombre completo" class="w-full p-4 rounded-2xl bg-blue-50/50 border border-blue-100 outline-none focus:border-blue-300">
-                    <select id="rsvp-asistencia" class="w-full p-4 rounded-2xl bg-blue-50/50 border border-blue-100 outline-none focus:border-blue-300">
-                        <option value="Confirmado">Sí, asistiré</option>
-                        <option value="No asistirá">No podré asistir</option>
-                    </select>
-                    <button onclick="enviarConfirmacion()" id="btn-rsvp" class="block w-full py-4 bg-blue-900 text-white rounded-2xl font-bold tracking-[0.2em] text-[10px] shadow-lg">ENVIAR CONFIRMACIÓN</button>
-                </div>
+                <input type="text" id="rsvp-nombre" placeholder="Nombre completo" class="w-full p-4 mb-4 rounded-2xl bg-blue-50 border border-blue-100 outline-none">
+                <select id="rsvp-asistencia" class="w-full p-4 mb-6 rounded-2xl bg-blue-50 border border-blue-100 outline-none">
+                    <option value="Confirmado">Sí, asistiré</option>
+                    <option value="No asistirá">No podré asistir</option>
+                </select>
+                <button onclick="procesarConfirmacion()" id="btn-rsvp" class="w-full py-4 bg-blue-900 text-white rounded-2xl font-bold tracking-widest text-[10px]">ENVIAR Y NOTIFICAR POR WHATSAPP</button>
             </div>
         </section>
 
-        <section class="py-24 px-6 text-center bg-white relative">
+        <section class="py-24 px-6 text-center bg-white">
             <h2 class="font-name text-2xl text-blue-900 mb-10">Muro de Deseos</h2>
-            <div class="max-w-2xl mx-auto space-y-4 relative z-10">
-                <textarea id="muro-mensaje" placeholder="Deja tus buenos deseos..." class="w-full h-40 p-8 rounded-3xl bg-blue-50/50 border border-blue-100 outline-none focus:border-blue-300 italic text-gray-600 resize-none"></textarea>
-                <input type="text" id="muro-nombre" placeholder="Tu nombre" class="w-full p-4 rounded-2xl bg-blue-50/50 border border-blue-100 outline-none focus:border-blue-300">
+            <div class="max-w-2xl mx-auto space-y-4">
+                <textarea id="muro-mensaje" placeholder="Tus deseos aquí..." class="w-full h-40 p-8 rounded-3xl bg-blue-50 border border-blue-100 outline-none italic resize-none"></textarea>
+                <input type="text" id="muro-nombre" placeholder="Tu nombre" class="w-full p-4 rounded-2xl bg-blue-50 border border-blue-100 outline-none">
                 <button onclick="enviarDeseo()" id="btn-muro" class="px-12 py-3 border-2 border-blue-200 text-blue-400 rounded-full font-bold text-[10px] tracking-widest">PUBLICAR</button>
             </div>
         </section>
@@ -181,59 +173,65 @@
     <script>
         const audio = document.getElementById('invite-music');
         const musicText = document.getElementById('music-text');
-        const WEB_APP_URL = 'https://script.google.com/macros/s/AKfycbz1QlM9Ccy08OOlvHKtNVApC6i62uatapKWDkSFVt_sRRrDFPsx7KohDrLYfXbvLVUK0Q/exec';
+        const URL_SCRIPT = 'https://script.google.com/macros/s/AKfycbz1QlM9Ccy08OOlvHKtNVApC6i62uatapKWDkSFVt_sRRrDFPsx7KohDrLYfXbvLVUK0Q/exec';
 
         function iniciarApertura() {
-            const overlay = document.getElementById('opening-overlay');
-            const wrapper = document.getElementById('envelope-wrapper');
-            const main = document.getElementById('main-content');
-            wrapper.classList.add('open');
+            document.getElementById('envelope-wrapper').classList.add('open');
             document.getElementById('btn-abrir').style.display = 'none';
-            audio.play().catch(e => console.log("Audio deferred"));
+            audio.play().catch(e => console.log("Audio play deferred"));
             document.getElementById('music-control').style.display = 'flex';
             
-            for (let i = 0; i < 12; i++) { crearMariposaExplosion(); }
+            for (let i = 0; i < 15; i++) { crearMariposaExplosion(); }
 
             setTimeout(() => {
-                overlay.style.opacity = '0';
-                main.classList.remove('hidden');
+                document.getElementById('opening-overlay').style.opacity = '0';
+                document.getElementById('main-content').classList.remove('hidden');
                 setTimeout(() => {
-                    overlay.style.display = 'none';
-                    main.classList.add('show-content');
+                    document.getElementById('opening-overlay').style.display = 'none';
+                    document.getElementById('main-content').classList.add('show-content');
                     document.body.style.overflowY = 'auto';
+                    startCountdown();
                 }, 1000);
-            }, 2500);
+            }, 2200);
         }
 
-        async function enviarConfirmacion() {
+        async function procesarConfirmacion() {
             const nombre = document.getElementById('rsvp-nombre').value;
             const asistencia = document.getElementById('rsvp-asistencia').value;
             const btn = document.getElementById('btn-rsvp');
-            if (!nombre) return alert("Escribe tu nombre");
-            btn.innerText = "ENVIANDO...";
-            btn.disabled = true;
+            if(!nombre) return alert("Escribe tu nombre");
+
+            btn.innerText = "REGISTRANDO...";
             try {
-                await fetch(WEB_APP_URL, { method: 'POST', mode: 'no-cors', body: JSON.stringify({ tipo: 'confirmacion', nombre, asistencia }) });
-                alert("¡Registro exitoso!");
-                btn.innerText = "ENVIADO";
-            } catch (e) { alert("Error al enviar"); btn.disabled = false; }
+                await fetch(URL_SCRIPT, { method: 'POST', mode: 'no-cors', body: JSON.stringify({ tipo: 'confirmacion', nombre, asistencia }) });
+                const msg = `¡Hola Michelle! Confirmo mi asistencia: ${nombre}. Estado: ${asistencia}`;
+                window.open(`https://wa.me/525539994414?text=${encodeURIComponent(msg)}`, '_blank');
+                btn.innerText = "¡LISTO!";
+            } catch (e) { alert("Error"); btn.innerText = "REINTENTAR"; }
         }
 
         async function enviarDeseo() {
             const mensaje = document.getElementById('muro-mensaje').value;
             const nombre = document.getElementById('muro-nombre').value;
-            const btn = document.getElementById('btn-muro');
-            if (!mensaje || !nombre) return alert("Completa los campos");
-            btn.innerText = "PUBLICANDO...";
-            btn.disabled = true;
+            if(!mensaje || !nombre) return alert("Llena ambos campos");
             try {
-                await fetch(WEB_APP_URL, { method: 'POST', mode: 'no-cors', body: JSON.stringify({ tipo: 'deseo', mensaje, nombre }) });
-                alert("¡Mensaje publicado!");
+                await fetch(URL_SCRIPT, { method: 'POST', mode: 'no-cors', body: JSON.stringify({ tipo: 'deseo', mensaje, nombre }) });
+                alert("¡Mensaje enviado!");
                 document.getElementById('muro-mensaje').value = "";
                 document.getElementById('muro-nombre').value = "";
-                btn.innerText = "PUBLICAR OTRO";
-                btn.disabled = false;
-            } catch (e) { alert("Error"); btn.disabled = false; }
+            } catch (e) { alert("Error"); }
+        }
+
+        function startCountdown() {
+            const target = new Date("Oct 24, 2026 17:15:00").getTime();
+            setInterval(() => {
+                const now = new Date().getTime();
+                const dist = target - now;
+                document.getElementById("days").innerText = Math.floor(dist / (1000 * 60 * 60 * 24));
+                document.getElementById("hours").innerText = Math.floor((dist % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                document.getElementById("minutes").innerText = Math.floor((dist % (1000 * 60 * 60)) / (1000 * 60));
+                document.getElementById("seconds").innerText = Math.floor((dist % (1000 * 60)) / 1000);
+            }, 1000);
         }
 
         function toggleMusic() {
@@ -245,17 +243,13 @@
             const img = document.createElement('img');
             img.src = 'assets/mariposa.png';
             img.className = 'butterfly-img';
-            img.style.position = 'fixed';
-            img.style.left = '50%';
-            img.style.top = '50%';
+            img.style.position = 'fixed'; img.style.left = '50%'; img.style.top = '50%';
             img.style.width = (Math.random() * 20 + 30) + 'px';
             document.body.appendChild(img);
-            const destX = (Math.random() - 0.5) * window.innerWidth * 1.5;
-            const destY = -(Math.random() * window.innerHeight + 200);
             img.animate([
                 { transform: 'translate(-50%, -50%) scale(0)', opacity: 0 },
                 { opacity: 1, offset: 0.2 },
-                { transform: `translate(${destX}px, ${destY}px) scale(1) rotate(${Math.random()*360}deg)`, opacity: 0 }
+                { transform: `translate(${(Math.random()-0.5)*window.innerWidth}px, ${-(Math.random()*window.innerHeight)}px) rotate(${Math.random()*360}deg)`, opacity: 0 }
             ], { duration: 3000, easing: 'ease-out', fill: 'forwards' });
             setTimeout(() => img.remove(), 3500);
         }
