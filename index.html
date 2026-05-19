@@ -89,10 +89,10 @@
 
     <div id="opening-overlay" class="fixed inset-0 z-[100] bg-[#E1EFFE] flex flex-col items-center justify-center transition-opacity duration-1000 overflow-hidden">
         
-        <img src="assets/mariposa.png" class="absolute pointer-events-none select-none opacity-[0.12]" style="top: 8%; left: -8%; width: 260px; transform: rotate(18deg); filter: blur(0.5px);">
-        <img src="assets/mariposa.png" class="absolute pointer-events-none select-none opacity-[0.08]" style="bottom: 12%; right: -5%; width: 320px; transform: rotate(-22deg); filter: blur(1px);">
-        <img src="assets/mariposa.png" class="absolute pointer-events-none select-none opacity-[0.15]" style="top: 52%; right: 10%; width: 140px; transform: rotate(35deg);">
-        <img src="assets/mariposa.png" class="absolute pointer-events-none select-none opacity-[0.06]" style="bottom: 5%; left: 15%; width: 160px; transform: rotate(-40deg);">
+        <img src="assets/mariposa.png" class="absolute pointer-events-none select-none opacity-[0.22]" style="top: 5%; left: -6%; width: 280px; transform: rotate(18deg); filter: drop-shadow(0 10px 20px rgba(18,40,77,0.08));">
+        <img src="assets/mariposa.png" class="absolute pointer-events-none select-none opacity-[0.16]" style="bottom: 8%; right: -5%; width: 340px; transform: rotate(-22deg); filter: drop-shadow(0 10px 20px rgba(18,40,77,0.05));">
+        <img src="assets/mariposa.png" class="absolute pointer-events-none select-none opacity-[0.25]" style="top: 48%; right: 8%; width: 150px; transform: rotate(35deg);">
+        <img src="assets/mariposa.png" class="absolute pointer-events-none select-none opacity-[0.14]" style="bottom: 4%; left: 12%; width: 180px; transform: rotate(-40deg);">
 
         <div id="envelope-wrapper">
             <div id="envelope">
@@ -127,49 +127,49 @@
             </div>
         </section>
 
-        <section class="py-12 bg-gradient-to-b from-[var(--azul-claro)] to-white text-center pb-14 relative overflow-hidden">
-            <img src="assets/mariposa.png" class="absolute pointer-events-none opacity-[0.06]" style="top: -40px; left: 1%; width: 130px; transform: rotate(-25deg);">
+        <section class="py-14 bg-gradient-to-b from-[var(--azul-claro)] via-[#C5E3F6] to-white text-center pb-16 relative overflow-hidden">
+            <img src="assets/mariposa.png" class="absolute pointer-events-none opacity-[0.15]" style="top: -25px; left: 2%; width: 140px; transform: rotate(-25deg);">
             
             <div id="countdown" class="flex justify-center gap-3 md:gap-8 px-4 relative z-10">
-                <div class="flex flex-col items-center justify-center bg-white/70 backdrop-blur-md border border-blue-100 shadow-[0_8px_20px_rgba(0,0,0,0.06)] rounded-2xl w-20 h-24 md:w-24 md:h-28">
-                    <span id="days" class="font-name text-3xl md:text-4xl text-blue-900">00</span>
-                    <span class="text-[10px] uppercase tracking-widest text-blue-600 mt-1">Días</span>
+                <div class="flex flex-col items-center justify-center bg-white/85 backdrop-blur-md border border-blue-200 shadow-[0_10px_25px_rgba(18,40,77,0.08)] rounded-2xl w-20 h-24 md:w-24 md:h-28">
+                    <span id="days" class="font-name text-3xl md:text-4xl text-blue-900 font-bold">00</span>
+                    <span class="text-[10px] uppercase tracking-widest text-blue-600 mt-1 font-semibold">Días</span>
                 </div>
-                <div class="flex flex-col items-center justify-center bg-white/70 backdrop-blur-md border border-blue-100 shadow-[0_8px_20px_rgba(0,0,0,0.06)] rounded-2xl w-20 h-24 md:w-24 md:h-28">
-                    <span id="hours" class="font-name text-3xl md:text-4xl text-blue-900">00</span>
-                    <span class="text-[10px] uppercase tracking-widest text-blue-600 mt-1">Hrs</span>
+                <div class="flex flex-col items-center justify-center bg-white/85 backdrop-blur-md border border-blue-200 shadow-[0_10px_25px_rgba(18,40,77,0.08)] rounded-2xl w-20 h-24 md:w-24 md:h-28">
+                    <span id="hours" class="font-name text-3xl md:text-4xl text-blue-900 font-bold">00</span>
+                    <span class="text-[10px] uppercase tracking-widest text-blue-600 mt-1 font-semibold">Hrs</span>
                 </div>
-                <div class="flex flex-col items-center justify-center bg-white/70 backdrop-blur-md border border-blue-100 shadow-[0_8px_20px_rgba(0,0,0,0.06)] rounded-2xl w-20 h-24 md:w-24 md:h-28">
-                    <span id="minutes" class="font-name text-3xl md:text-4xl text-blue-900">00</span>
-                    <span class="text-[10px] uppercase tracking-widest text-blue-600 mt-1">Min</span>
+                <div class="flex flex-col items-center justify-center bg-white/85 backdrop-blur-md border border-blue-200 shadow-[0_10px_25px_rgba(18,40,77,0.08)] rounded-2xl w-20 h-24 md:w-24 md:h-28">
+                    <span id="minutes" class="font-name text-3xl md:text-4xl text-blue-900 font-bold">00</span>
+                    <span class="text-[10px] uppercase tracking-widest text-blue-600 mt-1 font-semibold">Min</span>
                 </div>
-                <div class="flex flex-col items-center justify-center bg-white/70 backdrop-blur-md border border-blue-100 shadow-[0_8px_20px_rgba(0,0,0,0.06)] rounded-2xl w-20 h-24 md:w-24 md:h-28">
-                    <span id="seconds" class="font-name text-3xl md:text-4xl text-blue-900">00</span>
-                    <span class="text-[10px] uppercase tracking-widest text-blue-600 mt-1">Seg</span>
+                <div class="flex flex-col items-center justify-center bg-white/85 backdrop-blur-md border border-blue-200 shadow-[0_10px_25px_rgba(18,40,77,0.08)] rounded-2xl w-20 h-24 md:w-24 md:h-28">
+                    <span id="seconds" class="font-name text-3xl md:text-4xl text-blue-900 font-bold">00</span>
+                    <span class="text-[10px] uppercase tracking-widest text-blue-600 mt-1 font-semibold">Seg</span>
                 </div>
             </div>
         </section>
 
-        <section class="pb-16 pt-10 px-8 text-center bg-white relative overflow-hidden">
-            <img src="assets/mariposa.png" class="absolute pointer-events-none opacity-[0.05]" style="bottom: -10px; right: 8%; width: 150px; transform: rotate(25deg);">
-            <p class="font-cursive text-3xl text-blue-600 max-w-lg mx-auto leading-relaxed relative z-10">
+        <section class="pb-20 pt-10 px-8 text-center bg-gradient-to-b from-white to-[#F2F8FC] relative overflow-hidden">
+            <img src="assets/mariposa.png" class="absolute pointer-events-none opacity-[0.14]" style="bottom: -15px; right: 6%; width: 160px; transform: rotate(25deg);">
+            <p class="font-cursive text-3xl md:text-4xl text-blue-600 max-w-lg mx-auto leading-relaxed relative z-10">
                 "Hay momentos inolvidables que se atesoran en el corazón para siempre. Gracias por ser parte de mi historia."
             </p>
         </section>
 
-        <section class="py-14 px-6 text-center bg-gradient-to-b from-white via-[#F1F8FD] to-white relative overflow-hidden">
-            <img src="assets/mariposa.png" class="absolute pointer-events-none opacity-[0.06]" style="top: 20px; left: -30px; width: 200px; transform: rotate(12deg);">
-            <div class="max-w-2xl mx-auto border-y border-blue-200/60 py-10 relative z-10">
-                <p class="uppercase tracking-[0.3em] text-[10px] text-blue-900/60 font-semibold mb-6">Con la bendición de mis padres</p>
-                <h3 class="font-cursive text-4xl text-blue-900">Mariana Rodríguez</h3>
+        <section class="py-16 px-6 text-center bg-gradient-to-b from-[#F2F8FC] via-[#D5ECFA] to-white relative overflow-hidden">
+            <img src="assets/mariposa.png" class="absolute pointer-events-none opacity-[0.15]" style="top: 30px; left: -40px; width: 220px; transform: rotate(12deg);">
+            <div class="max-w-2xl mx-auto border-y-2 border-blue-200/80 py-12 relative z-10">
+                <p class="uppercase tracking-[0.3em] text-[11px] text-blue-950 font-bold mb-6">Con la bendición de mis padres</p>
+                <h3 class="font-cursive text-4xl md:text-5xl text-blue-900">Mariana Rodríguez</h3>
                 <p class="font-cursive text-3xl text-blue-400 my-2">&</p>
-                <h3 class="font-cursive text-4xl text-blue-900">Ricardo Pérez</h3>
+                <h3 class="font-cursive text-4xl md:text-5xl text-blue-900">Ricardo Pérez</h3>
             </div>
         </section>
 
-        <section class="py-14 text-center bg-gradient-to-b from-white via-[var(--azul-pantone)]/25 to-white relative overflow-hidden">
-            <img src="assets/mariposa.png" class="absolute pointer-events-none opacity-[0.08]" style="bottom: -40px; right: 15%; width: 170px; transform: rotate(-15deg);">
-            <h2 class="font-name text-4xl text-blue-900 font-bold tracking-wide relative z-10">24 de Octubre</h2>
+        <section class="py-16 text-center bg-gradient-to-b from-white via-[#B2DCF4] to-white relative overflow-hidden">
+            <img src="assets/mariposa.png" class="absolute pointer-events-none opacity-[0.18]" style="bottom: -35px; right: 12%; width: 190px; transform: rotate(-15deg);">
+            <h2 class="font-name text-4xl md:text-5xl text-blue-950 font-bold tracking-widest relative z-10 uppercase">24 de Octubre</h2>
         </section>
 
         <section class="py-16 px-6 text-center bg-white">
@@ -196,42 +196,42 @@
             </div>
         </section>
 
-        <section class="py-16 px-6 text-center bg-gradient-to-b from-white via-[#F1F8FD] to-white relative overflow-hidden">
-            <img src="assets/mariposa.png" class="absolute pointer-events-none opacity-[0.06]" style="bottom: 40px; left: 8%; width: 220px; transform: rotate(20deg); filter: blur(0.5px);">
+        <section class="py-18 px-6 text-center bg-gradient-to-b from-white via-[#D5ECFA] to-white relative overflow-hidden">
+            <img src="assets/mariposa.png" class="absolute pointer-events-none opacity-[0.16]" style="bottom: 50px; left: 5%; width: 240px; transform: rotate(20deg); filter: blur(0.5px);">
             
-            <div class="flex items-center justify-center mb-10 relative inline-block mx-auto z-10">
-                <h2 class="font-name text-3xl text-blue-900">Itinerario</h2>
+            <div class="flex items-center justify-center mb-12 relative inline-block mx-auto z-10">
+                <h2 class="font-name text-3xl text-blue-900 font-bold">Itinerario</h2>
                 <img src="assets/mariposa.png" class="butterfly-img" style="position: relative; display: inline-block; width: 40px; margin-left: 10px; top: -5px; filter: drop-shadow(0 5px 10px rgba(0,0,0,0.1));">
             </div>
             
-            <div class="max-w-md mx-auto space-y-8 text-left border-l-2 border-blue-200 pl-8 relative z-10">
+            <div class="max-w-md mx-auto space-y-8 text-left border-l-2 border-blue-300 pl-8 relative z-10">
                 <div class="relative anim-slide-right" style="transition-delay: 0.1s;">
-                    <div class="absolute -left-[41px] top-1 w-4 h-4 rounded-full bg-blue-300"></div>
-                    <p class="font-name text-blue-900 text-lg flex items-center gap-2"><span class="text-xl">🥂</span> 5:15 Recepción</p>
+                    <div class="absolute -left-[41px] top-1 w-4 h-4 rounded-full bg-blue-400 shadow"></div>
+                    <p class="font-name text-blue-900 text-lg flex items-center gap-2 font-semibold"><span class="text-xl">🥂</span> 5:15 Recepción</p>
                 </div>
                 <div class="relative anim-slide-left" style="transition-delay: 0.2s;">
-                    <div class="absolute -left-[41px] top-1 w-4 h-4 rounded-full bg-blue-400"></div>
-                    <p class="font-name text-blue-900 text-lg flex items-center gap-2"><span class="text-xl">⛪</span> 5:30 Ceremonia</p>
+                    <div class="absolute -left-[41px] top-1 w-4 h-4 rounded-full bg-blue-500 shadow"></div>
+                    <p class="font-name text-blue-900 text-lg flex items-center gap-2 font-semibold"><span class="text-xl">⛪</span> 5:30 Ceremonia</p>
                 </div>
                 <div class="relative anim-slide-right" style="transition-delay: 0.3s;">
-                    <div class="absolute -left-[41px] top-1 w-4 h-4 rounded-full bg-blue-300"></div>
-                    <p class="font-name text-blue-900 text-lg flex items-center gap-2"><span class="text-xl">🍸</span> 6:15 Coctail de bienvenida</p>
+                    <div class="absolute -left-[41px] top-1 w-4 h-4 rounded-full bg-blue-400 shadow"></div>
+                    <p class="font-name text-blue-900 text-lg flex items-center gap-2 font-semibold"><span class="text-xl">🍸</span> 6:15 Coctail de bienvenida</p>
                 </div>
                 <div class="relative anim-slide-left" style="transition-delay: 0.4s;">
-                    <div class="absolute -left-[41px] top-1 w-4 h-4 rounded-full bg-blue-400"></div>
-                    <p class="font-name text-blue-900 text-lg flex items-center gap-2"><span class="text-xl">💃</span> 6:30 Baile familiar y chambelanes</p>
+                    <div class="absolute -left-[41px] top-1 w-4 h-4 rounded-full bg-blue-500 shadow"></div>
+                    <p class="font-name text-blue-900 text-lg flex items-center gap-2 font-semibold"><span class="text-xl">💃</span> 6:30 Baile familiar y chambelanes</p>
                 </div>
                 <div class="relative anim-slide-right" style="transition-delay: 0.5s;">
-                    <div class="absolute -left-[41px] top-1 w-4 h-4 rounded-full bg-blue-300"></div>
-                    <p class="font-name text-blue-900 text-lg flex items-center gap-2"><span class="text-xl">🍽️</span> 7:00 Cena</p>
+                    <div class="absolute -left-[41px] top-1 w-4 h-4 rounded-full bg-blue-400 shadow"></div>
+                    <p class="font-name text-blue-900 text-lg flex items-center gap-2 font-semibold"><span class="text-xl">🍽️</span> 7:00 Cena</p>
                 </div>
                 <div class="relative anim-slide-left" style="transition-delay: 0.6s;">
-                    <div class="absolute -left-[41px] top-1 w-4 h-4 rounded-full bg-blue-400"></div>
-                    <p class="font-name text-blue-900 text-lg flex items-center gap-2"><span class="text-xl">✨</span> 9:00 Baile sorpresa</p>
+                    <div class="absolute -left-[41px] top-1 w-4 h-4 rounded-full bg-blue-500 shadow"></div>
+                    <p class="font-name text-blue-900 text-lg flex items-center gap-2 font-semibold"><span class="text-xl">✨</span> 9:00 Baile sorpresa</p>
                 </div>
                 <div class="relative anim-slide-right" style="transition-delay: 0.7s;">
-                    <div class="absolute -left-[41px] top-1 w-4 h-4 rounded-full bg-blue-300"></div>
-                    <p class="font-name text-blue-900 text-lg flex items-center gap-2"><span class="text-xl">🌙</span> 11:00 Fin del evento</p>
+                    <div class="absolute -left-[41px] top-1 w-4 h-4 rounded-full bg-blue-400 shadow"></div>
+                    <p class="font-name text-blue-900 text-lg flex items-center gap-2 font-semibold"><span class="text-xl">🌙</span> 11:00 Fin del evento</p>
                 </div>
             </div>
         </section>
@@ -240,7 +240,7 @@
             <img src="assets/mich1.jpg" alt="Michelle" class="w-full h-full object-cover rounded-3xl shadow-2xl">
         </section>
 
-        <section class="py-16 px-8 text-center bg-gradient-to-b from-white via-blue-50/30 to-white">
+        <section class="py-16 px-8 text-center bg-gradient-to-b from-white via-[#EBF5FC] to-white">
             <svg class="w-12 h-12 mx-auto mb-3 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.2" d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09l2.846.813-2.846.813a4.5 4.5 0 00-3.09 3.09zM18.259 8.715L18 9.75l-.259-1.035a3.375 3.375 0 00-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 002.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 002.456 2.456L21.75 6l-1.035.259a3.375 3.375 0 00-2.456 2.456z"></path>
             </svg>
@@ -249,14 +249,14 @@
             <p class="text-blue-500 font-light italic max-w-sm mx-auto">Se reserva el color azul pastel para la quinceañera.</p>
         </section>
 
-        <section class="py-16 px-8 text-center bg-gradient-to-b from-white via-[#F1F8FD] to-[var(--azul-claro)] border-t border-blue-50 relative overflow-hidden">
-            <img src="assets/mariposa.png" class="absolute pointer-events-none opacity-[0.05]" style="top: 10px; right: -20px; width: 160px; transform: rotate(-10deg);">
+        <section class="py-18 px-8 text-center bg-gradient-to-b from-white via-[#D5ECFA] to-[var(--azul-claro)] border-t border-blue-50 relative overflow-hidden">
+            <img src="assets/mariposa.png" class="absolute pointer-events-none opacity-[0.12]" style="top: 15px; right: -15px; width: 170px; transform: rotate(-10deg);">
             <div class="relative z-10">
                 <svg class="w-12 h-12 mx-auto mb-3 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.2" d="M12 8v13m0-13V6a2 2 0 112 2h-2zm0 0V5.5A2.5 2.5 0 109.5 8H12zm-7 4h14M5 12a2 2 0 110-4h14a2 2 0 110 4M5 12v7a2 2 0 002 2h10a2 2 0 002-2v-7"></path>
                 </svg>
                 <h2 class="font-name text-2xl text-blue-900 mb-4">Sugerencia de Regalos</h2>
-                <p class="text-blue-600 font-light italic max-w-md mx-auto leading-relaxed">
+                <p class="text-blue-700 font-medium italic max-w-md mx-auto leading-relaxed">
                     "Para nosotros, tu presencia es el mejor regalo. Si deseas regalarme algo, consideramos la dinámica de lluvia de sobres."
                 </p>
             </div>
